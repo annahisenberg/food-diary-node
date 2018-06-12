@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+}
+
+body,
+html {
+    height: 100%;
+    /* The image used */
+    background-image: url("https://images.unsplash.com/photo-1472211093208-3b31a17f3b12?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4cb1f240bcb8e959f932795eebbe94a&auto=format&fit=crop&w=1494&q=80");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+main {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    height: 100px;
+}
+
+label {
+    color: white;
+}
+
+input {
+    border: 2px solid lightgray;
+    border-radius: 3px;
+}
+
+input:hover {
+    border: 2px solid navy;
+}
+
+input::placeholder {
+    color: lightgray;
+    font-size: 16;
+}

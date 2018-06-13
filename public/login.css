@@ -1,28 +1,60 @@
 * {
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
 }
 
 body,
 html {
     height: 100%;
-    /* The image used */
     background-image: url("https://images.unsplash.com/photo-1472211093208-3b31a17f3b12?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4cb1f240bcb8e959f932795eebbe94a&auto=format&fit=crop&w=1494&q=80");
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
 }
 
+nav {
+    background-color: white;
+}
+
+nav .container {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+    padding-left: 0px;
+}
+
+.container li {
+    list-style-type: none;
+    margin: 5px;
+}
+
+li a {
+    text-decoration: none;
+    color: #c7266c;
+    margin: 15px;
+}
+
+a:visited {
+    color: #c7266c;
+}
+
+a:hover {
+    color: #860c41;
+}
+
 main {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    height: 100px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 label {
@@ -30,15 +62,37 @@ label {
 }
 
 input {
-    border: 2px solid lightgray;
-    border-radius: 3px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ce2e69;
 }
 
-input:hover {
-    border: 2px solid navy;
+input:focus {
+    outline: none;
 }
 
 input::placeholder {
     color: lightgray;
     font-size: 16;
+}
+
+button {
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    background: #ce2e69;
+    border: none;
+    color: white;
+    transition: all 0.3s;
+}
+
+button:hover {
+    background: white;
+    color: #ce2e69;
+}
+
+h1 {
+    text-align: center;
+    color: navy;
+    background-color: rgb(241, 239, 239);
 }

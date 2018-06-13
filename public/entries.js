@@ -46,7 +46,7 @@ function getAndDisplayDiaryEntries() {
 
 function displayResults(data) {
     for (index in data.diaryEntries) {
-        $('body').append(`<p>${data.diaryEntries[index].title}</p>`);
+        $('main').append(`<p><a href="#">${data.diaryEntries[index].title}</a></p>`);
     }
 }
 

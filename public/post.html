@@ -6,34 +6,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="post.css" />
 </head>
 
 <body>
-    <h1>Post a food diary entry</h1>
+    <nav>
+        <ul class="container">
+            <li>
+                <a href="./login.html">Login</a>
+            </li>
+            <li>
+                <a href="./post.html">Post</a>
+            </li>
+            <li>
+                <a href="./entries.html">Past entries</a>
+            </li>
+            <li>
+                <a href="./index.html">Home</a>
+            </li>
+        </ul>
+    </nav>
 
-    <form action="" method="post">
-        <div>
-            <label for="Breakfast">Breakfast:</label>
-            <textarea id="msg" name="breakfast_input"></textarea>
-        </div>
-        <div>
-            <label for="Lunch">Lunch:</label>
-            <textarea id="msg" name="lunch_input"></textarea>
-        </div>
-        <div>
-            <label for="Dinner">Dinner:</label>
-            <textarea id="msg" name="dinner_input"></textarea>
-        </div>
-        <div>
-            <label for="Snacks">Snacks:</label>
-            <textarea id="msg" name="snacks_input"></textarea>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
+    <main>
+        <h1>Post a food diary entry</h1>
+
+
+        <form action="" method="post">
+            <div>
+                <label for="Breakfast">Breakfast:</label>
+                <textarea id="msg" name="breakfast_input"></textarea>
+            </div>
+            <div>
+                <label for="Lunch">Lunch:</label>
+                <textarea id="msg" name="lunch_input"></textarea>
+            </div>
+            <div>
+                <label for="Dinner">Dinner:</label>
+                <textarea id="msg" name="dinner_input"></textarea>
+            </div>
+            <div>
+                <label for="Snacks">Snacks:</label>
+                <textarea id="msg" name="snacks_input"></textarea>
+            </div>
+            <div>
+                <input type="file" name="pic" accept="image/*">
+                <input type="file" name="pic" accept="image/*">
+                <input type="file" name="pic" accept="image/*">
+                <input type="file" name="pic" accept="image/*">
+            </div>
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </main>
 </body>
 
 </html>

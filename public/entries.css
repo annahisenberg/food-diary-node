@@ -1,0 +1,59 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+nav {
+    background-color: white;
+}
+
+nav .container {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.container li {
+    list-style-type: none;
+    margin: 5px;
+}
+
+li a {
+    text-decoration: none;
+    color: #c7266c;
+    margin: 15px;
+}
+
+a:visited {
+    color: #c7266c;
+}
+
+body,
+html {
+    height: 100%;
+    /* The image used */
+    background-image: url("https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b53fa23383203c9d550c595d8d6b6ef&auto=format&fit=crop&w=1536&q=80");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+main {
+    background: rgba(255, 255, 255, 0.7);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    border-radius: 3px;
+    border: 3px solid rgb(255, 129, 25);
+    padding: 40px;
+}
+
+a:hover {
+    color: #860c41;
+}

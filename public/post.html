@@ -34,18 +34,22 @@
         <form action="" method="post">
             <div>
                 <label for="Breakfast">Breakfast:</label>
+                <br>
                 <textarea id="msg" name="breakfast_input"></textarea>
             </div>
             <div>
                 <label for="Lunch">Lunch:</label>
+                <br>
                 <textarea id="msg" name="lunch_input"></textarea>
             </div>
             <div>
                 <label for="Dinner">Dinner:</label>
+                <br>
                 <textarea id="msg" name="dinner_input"></textarea>
             </div>
             <div>
                 <label for="Snacks">Snacks:</label>
+                <br>
                 <textarea id="msg" name="snacks_input"></textarea>
             </div>
             <div>
@@ -55,10 +59,21 @@
                 <input type="file" name="pic" accept="image/*">
             </div>
             <div>
+                <input id="date" type="date">
+            </div>
+            <div>
+                <label for="Calories">Calories:</label>
+                <br>
+                <input type="number" name="quantity" min="1" max="3000">
+            </div>
+            <div>
                 <button type="submit">Submit</button>
             </div>
         </form>
     </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="post.js"></script>
 </body>
 
 </html>

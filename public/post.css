@@ -33,26 +33,26 @@ a:visited {
 body,
 html {
     height: 100%;
-    /* The image used */
-    background-image: url("https://images.unsplash.com/photo-1473093226795-af9932fe5856?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3bf6fd384a4045ad91b8f08279f02ab8&auto=format&fit=crop&w=1370&q=80");
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     margin: 0;
+    background: rgb(46, 17, 45);
+    background: linear-gradient(58deg, rgba(46, 17, 45, 1) 0%, rgba(84, 0, 50, 1) 8%, rgba(130, 3, 51, 1) 23%, rgba(201, 40, 62, 1) 52%, rgba(240, 67, 58, 1) 82%);
 }
 
-main {
-    background: rgba(255, 255, 255, 0.7);
+form {
+    background: whitesmoke;
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
     border-radius: 3px;
-    border: 3px solid rgb(18, 180, 18);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 a:hover {
     color: #860c41;
+}
+
+textarea {
+    resize: none;
+    outline: none;
 }

@@ -5,10 +5,6 @@
     margin: 0;
 }
 
-nav {
-    background-color: white;
-}
-
 nav .container {
     margin-top: 0px;
     display: flex;
@@ -33,25 +29,41 @@ a:visited {
 body,
 html {
     height: 100%;
-    /* The image used */
-    background-image: url("https://images.unsplash.com/photo-1474564862106-1f23d10b9d72?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9b53fa23383203c9d550c595d8d6b6ef&auto=format&fit=crop&w=1536&q=80");
+    background: #72F2EB;
+    margin: 0;
+}
+
+header {
+    background-image: url("https://images.unsplash.com/photo-1485381473713-c6131409c0be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b4a7612415f6780eb09a06affbdcbd66&auto=format&fit=crop&w=1610&q=80");
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin: 0;
+    height: 300px;
+    width: 100%;
+    margin-top: 20px;
 }
 
 main {
-    background: rgba(255, 255, 255, 0.7);
+    background: white;
     position: fixed;
     top: 50%;
     left: 50%;
-    /* bring your own prefixes */
     transform: translate(-50%, -50%);
     border-radius: 3px;
     border: 3px solid rgb(255, 129, 25);
     padding: 40px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    font-size: 50px;
+}
+
+p a {
+    text-decoration: none;
 }
 
 a:hover {

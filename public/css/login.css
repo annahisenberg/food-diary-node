@@ -7,16 +7,8 @@
 body,
 html {
     height: 100%;
-    /* background-image: url("https://images.unsplash.com/photo-1472211093208-3b31a17f3b12?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c4cb1f240bcb8e959f932795eebbe94a&auto=format&fit=crop&w=1494&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover; */
     margin: 0;
     background: #46B29D;
-}
-
-nav {
-    background-color: white;
 }
 
 nav .container {
@@ -42,7 +34,7 @@ a:visited {
 }
 
 a:hover {
-    color: #46B29D;
+    color: rgb(227, 123, 64);
 }
 
 main {

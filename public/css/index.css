@@ -4,7 +4,6 @@
 }
 
 nav {
-    background-color: white;
     padding-top: 3px;
     padding-bottom: 3px;
 }
@@ -63,4 +62,13 @@ a:hover {
 
 .icon-spoon-knife:before {
     content: "\e9a3";
+}
+
+button {
+    color: #c7266c;
+    border: 1px solid #c7266c;
+    cursor: pointer;
+    outline: none;
+    border-radius: 20px;
+    font-size: 15px;
 }

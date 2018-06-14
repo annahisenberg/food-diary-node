@@ -5,10 +5,6 @@
     margin: 0;
 }
 
-nav {
-    background-color: white;
-}
-
 nav .container {
     margin-top: 0px;
     display: flex;

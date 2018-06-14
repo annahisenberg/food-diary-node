@@ -3,22 +3,14 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-const diaryPostSchema = mongoose.Schema({
-    Breakfast: String,
-    Lunch: String,
-    Dinner: String,
-    Snacks: String,
-    Date: Date,
-    Calories: Number
-});
 
 const signUpSchema = mongoose.Schema({
-    Username: {
+    username: {
         type: String,
         required: true,
         unique: true
     },
-    Password: {
+    password: {
         type: String,
         required: true
     },
@@ -29,11 +21,9 @@ const signUpSchema = mongoose.Schema({
 });
 
 
-const diaryPost = mongoose.model('DiaryPost', diaryPostSchema);
 const signUpSchema = mongoose.model('SignUp', signUpSchema);
 
 
 module.exports = {
-    diaryPost,
     signUpSchema
 };

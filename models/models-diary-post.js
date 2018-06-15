@@ -12,9 +12,9 @@ const diaryPostSchema = mongoose.Schema({
     calories: Number
 });
 
-const diaryPost = mongoose.model('DiaryPost', diaryPostSchema);
+const DiaryPost = mongoose.model('DiaryPost', diaryPostSchema);
 
 
 module.exports = {
-    diaryPost
+    DiaryPost
 };

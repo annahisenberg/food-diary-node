@@ -21,9 +21,9 @@ const signUpSchema = mongoose.Schema({
 });
 
 
-const signUpSchema = mongoose.model('SignUp', signUpSchema);
+const Register = mongoose.model('SignUp', signUpSchema);
 
 
 module.exports = {
-    signUpSchema
+    Register
 };

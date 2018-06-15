@@ -82,16 +82,21 @@ button {
     margin-left: 20px;
 }
 
-.login-header {
-    /* background: #F0CA4D; */
+.login-picture {
+    height: 100%;
+    width: 200px;
     background: rgb(227, 123, 64);
     background: linear-gradient(0deg, rgba(227, 123, 64, 1) 0%, rgba(240, 202, 77, 1) 100%);
 }
 
 h1 {
     margin-top: 0;
-    color: white;
+    color: #46B29D;
     padding: 30px;
+}
+
+h1 a {
+    text-decoration: none;
 }
 
 /* button i {

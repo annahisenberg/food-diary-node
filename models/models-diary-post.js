@@ -8,13 +8,15 @@ const diaryPostSchema = mongoose.Schema({
     lunch: String,
     dinner: String,
     snacks: String,
-    created: Date,
-    calories: Number
+    timestamps: true,
+    calories: Number,
+    img: {
+        data: Buffer,
+        contentType: String
+    }
 });
 
 const DiaryPost = mongoose.model('DiaryPost', diaryPostSchema);
 
 
-module.exports = {
-    DiaryPost
-};
+module.exports = DiaryPost;

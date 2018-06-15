@@ -16,7 +16,8 @@ const signUpSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 });
 
@@ -24,6 +25,4 @@ const signUpSchema = mongoose.Schema({
 const Register = mongoose.model('SignUp', signUpSchema);
 
 
-module.exports = {
-    Register
-};
+module.exports = Register;

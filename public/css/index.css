@@ -23,6 +23,7 @@ li a {
     text-decoration: none;
     color: #c7266c;
     margin: 15px;
+    letter-spacing:  4px;
 }
 
 a:visited {
@@ -64,11 +65,13 @@ a:hover {
     content: "\e9a3";
 }
 
-button {
+.start {
     color: #c7266c;
     border: 1px solid #c7266c;
     cursor: pointer;
     outline: none;
     border-radius: 20px;
     font-size: 15px;
+    text-decoration: none;
+    padding: 5px;
 }

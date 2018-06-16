@@ -20,6 +20,7 @@ li a {
     text-decoration: none;
     color: #c7266c;
     margin: 15px;
+    letter-spacing: 4px;
 }
 
 a:visited {
@@ -29,43 +30,47 @@ a:visited {
 body,
 html {
     height: 100%;
-    background: #72F2EB;
-    margin: 0;
+    background: #f3f2f2;
+    margin: 5px;
 }
 
-header {
-    background-image: url("https://images.unsplash.com/photo-1485381473713-c6131409c0be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b4a7612415f6780eb09a06affbdcbd66&auto=format&fit=crop&w=1610&q=80");
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 300px;
-    width: 100%;
-    margin-top: 20px;
-}
-
-main {
+.card {
     background: white;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     border-radius: 3px;
-    border: 3px solid rgb(255, 129, 25);
-    padding: 40px;
+    /* border: 3px solid rgb(255, 129, 25); */
+    padding: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1 {
     text-align: center;
-    color: white;
+    color: #ff007d;
     font-size: 50px;
+    margin-top: 18px;
+    margin-bottom: 10px;
 }
 
-p a {
-    text-decoration: none;
+.card img {
+    width: 100%;
 }
 
-a:hover {
-    color: #860c41;
+.card p {
+    text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px;
+    }
+    .card {
+        flex: 1 1 450px;
+        margin: 10px;
+        transition: all .3s;
+    }
+    .card:hover {
+        transform: scale(1.02);
+        cursor: pointer;
+    }
 }

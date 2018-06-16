@@ -6,7 +6,8 @@ var MOCK_DIARY_ENTRIES = {
             "Lunch": "Peanut butter and jelly sandwich",
             "Dinner": "Chicken and potatoes",
             "Snacks": "Banana and peanut butter",
-            "publishedAt": 1470016976609
+            "publishedAt": 1470016976609,
+            "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
         },
         {
             "id": "2222222",
@@ -15,7 +16,8 @@ var MOCK_DIARY_ENTRIES = {
             "Lunch": "Chicken salad sandwich",
             "Dinner": "Lasagna",
             "Snacks": "Apple",
-            "publishedAt": 1470016976717
+            "publishedAt": 1470016976717,
+            "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
         },
         {
             "id": "333333",
@@ -24,7 +26,8 @@ var MOCK_DIARY_ENTRIES = {
             "Lunch": "Quesadilla",
             "Dinner": "Chicken tinga",
             "Snacks": "Trail mix",
-            "publishedAt": 1470016976718
+            "publishedAt": 1470016976718,
+            "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
         },
         {
             "id": "4444444",
@@ -33,7 +36,8 @@ var MOCK_DIARY_ENTRIES = {
             "Lunch": "Salad",
             "Dinner": "Chili",
             "Snacks": "Potato chips",
-            "publishedAt": 1470016976719
+            "publishedAt": 1470016976719,
+            "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
         }
     ]
 };
@@ -46,11 +50,18 @@ function getAndDisplayDiaryEntries() {
 
 function displayResults(data) {
     for (index in data.diaryEntries) {
-        $('main').append(`<p><a href="#">${data.diaryEntries[index].title}</a></p>`);
+        $('main').append(`<div class="card"><p>${data.diaryEntries[index].title}</p><img src="${data.diaryEntries[index].image}"/></div>`);
     }
+}
+
+function handleClickedDiv() {
+    $('main').on('click', '.card', function () {
+        window.location = '../html/index.html';
+    });
 }
 
 //  on page load do this
 $(function () {
     getAndDisplayDiaryEntries();
+    handleClickedDiv();
 })

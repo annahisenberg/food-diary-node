@@ -8,7 +8,8 @@ body,
 html {
     height: 100%;
     margin: 0;
-    background: #46B29D;
+    background: rgb(255, 72, 88);
+    background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
 }
 
 nav .container {
@@ -27,6 +28,7 @@ li a {
     text-decoration: none;
     color: #324D5C;
     margin: 15px;
+    letter-spacing: 3px;
 }
 
 a:visited {
@@ -55,7 +57,7 @@ label {
 input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #E37B40;
+    border-bottom: 1px solid #FF4858;
     margin: 15px;
 }
 
@@ -76,27 +78,56 @@ button {
     color: white;
     transition: all 0.5s;
     border-radius: 25px;
-    background: rgb(227, 123, 64);
-    background: linear-gradient(0deg, rgba(227, 123, 64, 1) 0%, rgba(222, 91, 73, 1) 100%);
+    background: rgb(255, 72, 88);
+    background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 20px;
 }
 
 .login-picture {
     height: 100%;
-    width: 200px;
-    background: rgb(227, 123, 64);
-    background: linear-gradient(0deg, rgba(227, 123, 64, 1) 0%, rgba(240, 202, 77, 1) 100%);
+    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1523904128325-33ea728b427b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2f77dac92f3d550bb82d867156a33b38&auto=format&fit=crop&w=800&q=60");
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.login-picture h2 {
+    color: white;
+    font-weight: normal;
+    text-align: center;
+    left: 0;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    letter-spacing: 5px;
 }
 
 h1 {
     margin-top: 0;
-    color: #46B29D;
     padding: 30px;
 }
 
 h1 a {
     text-decoration: none;
+    color: #c3c0b8;
+    font-weight: lighter;
+    font-size: 22px;
+}
+
+span {
+    font-weight: normal;
+    font-size: 19px;
+    color: #FF4858;
+}
+
+.selected {
+    color: darkgray;
+    font-weight: bold;
+    border-bottom: 1px solid cyan;
+    font-size: 30px;
 }
 
 /* button i {
@@ -126,5 +157,8 @@ h1 a {
     main {
         display: flex;
         justify-content: flex-end;
+    }
+    .login-picture {
+        width: 400px;
     }
 }

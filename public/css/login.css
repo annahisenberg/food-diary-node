@@ -84,9 +84,13 @@ button {
     margin-left: 20px;
 }
 
+.fa-sign-in-alt {
+    position: relative;
+}
+
 .login-picture {
-    height: 100%;
-    background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1523904128325-33ea728b427b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2f77dac92f3d550bb82d867156a33b38&auto=format&fit=crop&w=800&q=60");
+    height: 30%;
+    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/photo-1523904128325-33ea728b427b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2f77dac92f3d550bb82d867156a33b38&auto=format&fit=crop&w=800&q=60");
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -103,6 +107,7 @@ button {
     top: 30px;
     width: 100%;
     letter-spacing: 5px;
+    font-size: 10px;
 }
 
 h1 {
@@ -112,7 +117,7 @@ h1 {
 
 h1 a {
     text-decoration: none;
-    color: #c3c0b8;
+    color: #e8e7e4;
     font-weight: lighter;
     font-size: 22px;
 }
@@ -128,6 +133,10 @@ span {
     font-weight: bold;
     border-bottom: 1px solid cyan;
     font-size: 30px;
+}
+
+input::placeholder {
+    font-size: 15px;
 }
 
 /* button i {
@@ -160,5 +169,9 @@ span {
     }
     .login-picture {
         width: 400px;
+        height: 100%;
+    }
+    .login-picture h2 {
+        font-size: 20px;
     }
 }

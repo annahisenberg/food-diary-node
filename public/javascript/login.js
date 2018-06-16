@@ -1,7 +1,7 @@
 function animateArrowIcon() {
     $("button").hover(function () {
-        $(".fa-angle-double-right").animate({
-            left: '100px'
+        $(".fa-sign-in-alt").animate({
+            left: '5px'
         });
     });
 }

@@ -5,6 +5,7 @@ mongoose.Promise = global.Promise;
 
 
 const signUpSchema = mongoose.Schema({
+
     username: {
         type: String,
         required: true,
@@ -22,7 +23,7 @@ const signUpSchema = mongoose.Schema({
 });
 
 
-const Register = mongoose.model('SignUp', signUpSchema);
+const User = mongoose.model('SignUp', signUpSchema);
 
 
-module.exports = Register;
+module.exports = User;

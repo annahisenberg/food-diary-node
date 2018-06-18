@@ -9,6 +9,7 @@ const { DATABASE_URL, PORT } = require('./config');
 const DiaryPost = require('./models/models-diary-post');
 const User = require('./models/models-sign-up');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 
 //Middleware
@@ -17,6 +18,26 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+//Verify Token
+function verifyToken(req, res, next) {
+    // Get auth header value
+    const bearerHeader = req.headers['authorization'];
+    //Check if bearer is undefined
+    if (typeof bearerHeader !== 'undefined') {
+        // Split at sthepace
+        const bearer = bearerHeader.split(' ');
+        //Get token from array
+        const bearerToken = bearer[1];
+        //Set the token
+        req.token = bearerToken;
+        //Next middleware
+        next();
+    } else {
+        // forbidden
+        res.sendStatus(403);
+    }
+}
+
 mongoose
     .connect(DATABASE_URL)
     .then(() => console.log('MongoDB Connected'))
@@ -24,24 +45,24 @@ mongoose
 
 // @Route Home route
 // @Description: this is the main html
-app.get('/', (req, res) => {
+app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/html/index.html'));
 });
 
-app.get('/post', (req, res) => {
+app.get('/make-post', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/html/post.html'));
 });
 
-app.get('/login', (req, res) => {
+app.get('/login-page', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/html/login.html'));
 });
 
 //Gets all diary entries
-// app.get('/entries', (req, res) => {
-//     res.sendFile(path.join(__dirname + '/public/html/entries.html'));
-// });
+app.get('/entries-list', verifyToken, (req, res) => {
+    res.sendFile(path.join(__dirname + '/public/html/entries.html'));
+});
 
-app.get('/entries', (req, res) => {
+app.get('/entries', verifyToken, (req, res) => {
     DiaryPost.find()
         .then((posts) => {
             res.json(posts);
@@ -55,7 +76,7 @@ app.get('/entries', (req, res) => {
 });
 
 //gets diary entry by id
-app.get('/entries/:id', (req, res) => {
+app.get('/entries/:id', verifyToken, (req, res) => {
     DiaryPost.findById(req.params.id)
         .then((post) => res.json(post))
         .catch((err) => {
@@ -78,29 +99,45 @@ app.post('/register', (req, res) => {
         }
     }
 
-    const newUser = {
-        username: req.body.username,
-        password: req.body.password,
-        email: req.body.email
-    };
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(req.body.password, salt, (err, hash) => {
+            if (err) {
+                res.status(500).json({
+                    error: 'Password incorrect'
+                });
+            }
 
-    User.create(newUser)
-        .then((user) =>
-            res.status(201).json({
-                message: 'You have successfully created a new account.',
-                user
-            })
-        )
-        .catch((err) => {
-            console.error(err);
-            res.status(500).json({
-                error: 'Something went wrong'
-            });
+            req.body.password = hash;
+
+            const newUser = {
+                username: req.body.username,
+                password: req.body.password,
+                email: req.body.email
+            };
+
+            User.create(newUser)
+                .then((user) =>
+                    res.status(201).json({
+                        message: 'You have successfully created a new account.',
+                        user
+                    })
+                )
+                .catch((err) => {
+                    console.error(err);
+                    res.status(500).json({
+                        error: 'Something went wrong'
+                    });
+                });
+
         });
+    });
+
+
+
 });
 
 app.post('/login', (req, res) => {
-    const body = req.body;
+
     const email = req.body.email;
 
     User
@@ -112,9 +149,33 @@ app.post('/login', (req, res) => {
                     user,
                 })
             }
-            res.status(200).json({
-                user,
-            })
+
+            // compare user.password(comes from database) with req.body.password to see if they match
+            bcrypt.compare(req.body.password, user.password, (err, isMatch) => {
+                if (!isMatch) {
+                    res.status(400).json({
+                        message: "Incorrect password.",
+                        isMatch
+                    });
+                }
+
+                user.password = ':)';
+
+                return res.status(200).json({
+                    message: 'You have successfully logged in',
+                    isMatch,
+                    user
+                });
+            });
+
+            jwt.sign({ user }, 'secretkey', { expiresIn: '2 days' }, (err, token) => {
+                res.json({
+                    token
+                });
+            });
+
+
+
         })
         .catch(err => {
             res.status(500).json({
@@ -127,44 +188,40 @@ app.post('/login', (req, res) => {
 
 });
 
-app.post('/post', (req, res) => {
-    // return res.status(200).json({
-    //     response: req.body
-    // });
-    const payload = {
-        breakfast: req.body.breakfast_input,
-        lunch: req.body.lunch_input,
-        dinner: req.body.dinner_input,
-        snacks: req.body.snacks_input,
-        // timestamps: req.body.date_input,
-        calories: req.body.calories_input,
-        img: req.body.pic
-    };
+app.post('/post', verifyToken, (req, res) => {
 
-    console.log(payload);
+    jwt.verify(req.token, 'secretkey', (err, authData) => {
+        if (err) {
+            res.sendStatus(403);
+        } else {
+            // res.json({
+            //     message: 'Post created',
+            //     authData
+            // })
+            const payload = {
+                breakfast: req.body.breakfast_input,
+                lunch: req.body.lunch_input,
+                dinner: req.body.dinner_input,
+                snacks: req.body.snacks_input,
+                // timestamps: req.body.date_input,
+                calories: req.body.calories_input,
+                img: req.body.pic
+            };
+            DiaryPost.create(payload)
+                .then((post) => res.status(201).json(post))
+                .catch((err) => {
+                    console.error(err);
+                    return res.status(500).json({
+                        error: 'Something went wrong'
+                    });
+                });
+        }
+    });
 
-    // const diarypost = new DiaryPost({
-    //     breakfast: req.body.breakfast_input,
-    //     lunch: req.body.lunch_input,
-    //     dinner: req.body.dinner_input,
-    //     snacks: req.body.snacks_input,
-    //     // timestamps: req.body.date_input,
-    //     calories: req.body.calories_input,
-    //     img: req.body.pic
-    // });
-
-    DiaryPost.create(payload)
-        .then((post) => res.status(201).json(post))
-        .catch((err) => {
-            console.error(err);
-            return res.status(500).json({
-                error: 'Something went wrong'
-            });
-        });
 });
 
 // PUT routes
-app.put('/entries/:id', (req, res) => {
+app.put('/entries/:id', verifyToken, (req, res) => {
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         return res.status(400).json({
             error: 'Request path id and request body id values must match'
@@ -201,7 +258,7 @@ app.put('/entries/:id', (req, res) => {
 });
 
 // DElETE routes
-app.delete('/entries/:id', (req, res) => {
+app.delete('/entries/:id', verifyToken, (req, res) => {
     DiaryPost.findByIdAndRemove(req.params.id).then(() => {
         console.log(`Deleted diary entry with id \`${req.params.id}\``);
         return res.status(200).json({

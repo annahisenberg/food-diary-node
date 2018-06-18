@@ -70,7 +70,7 @@ h1 {
         transition: all .3s;
     }
     .card:hover {
-        transform: scale(1.02);
+        transform: scale(1.01);
         cursor: pointer;
     }
 }

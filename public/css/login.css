@@ -12,16 +12,20 @@ html {
     background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
 }
 
-nav .container {
-    margin-top: 0px;
-    display: flex;
-    justify-content: center;
-    padding-left: 0px;
+
+/* nav rules  */
+
+nav {
+    width: 100%;
 }
 
-.container li {
+nav ul {
     list-style-type: none;
-    margin: 5px;
+    display: none;
+}
+
+nav ul li {
+    text-align: center;
 }
 
 li a {
@@ -31,13 +35,36 @@ li a {
     letter-spacing: 3px;
 }
 
-a:visited {
+.show-nav {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin-top: 0;
+    padding-left: 0;
+}
+
+.nav-background {
+    background: #fff;
+    width: 100%;
+    margin-bottom: 1px;
+}
+
+.toggle-nav {
+    text-decoration: none;
+    display: block;
+    background: #fff;
+}
+
+li a:visited {
     color: #324D5C;
 }
 
 a:hover {
-    color: rgb(227, 123, 64);
+    color: #b5b4b2;
 }
+
+
+/* main rules  */
 
 main {
     position: fixed;
@@ -50,10 +77,6 @@ main {
     height: 50%;
 }
 
-label {
-    color: white;
-}
-
 input {
     background: transparent;
     border: none;
@@ -63,12 +86,20 @@ input {
 
 input:focus {
     outline: none;
+    border-bottom: 2px solid #FF4858;
 }
 
 input::placeholder {
     color: lightgray;
     font-size: 16;
 }
+
+input::placeholder {
+    font-size: 15px;
+}
+
+
+/* Go button rules */
 
 button {
     cursor: pointer;
@@ -84,14 +115,16 @@ button {
     margin-left: 20px;
 }
 
-.fa-sign-in-alt {
+.fa-angle-double-right {
     position: relative;
 }
+
+
+/* picture next to login screen */
 
 .login-picture {
     height: 30%;
     background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://images.unsplash.com/photo-1523904128325-33ea728b427b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2f77dac92f3d550bb82d867156a33b38&auto=format&fit=crop&w=800&q=60");
-    /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -109,6 +142,9 @@ button {
     letter-spacing: 5px;
     font-size: 10px;
 }
+
+
+/* Login or sign up text */
 
 h1 {
     margin-top: 0;
@@ -128,39 +164,15 @@ span {
     color: #FF4858;
 }
 
+
+/* Add this class if login or signup is selected */
+
 .selected {
     color: darkgray;
     font-weight: bold;
     border-bottom: 1px solid cyan;
-    font-size: 30px;
+    font-size: 26px;
 }
-
-input::placeholder {
-    font-size: 15px;
-}
-
-/* button i {
-    animation-name: moveRight;
-    animation-duration: 4s;
-}
-
-@keyframes moveRight {
-    0% {
-        left: 0px;
-    }
-    25% {
-        left: 3px;
-    }
-    50% {
-        left: 6px;
-    }
-    75% {
-        left: 3px;
-    }
-    100% {
-        left: 0px;
-    }
-} */
 
 @media only screen and (min-width: 768px) {
     main {
@@ -173,5 +185,24 @@ input::placeholder {
     }
     .login-picture h2 {
         font-size: 20px;
+    }
+    .nav-container {
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        padding-left: 0px;
+    }
+    .nav-container li {
+        list-style-type: none;
+        margin: 5px;
+    }
+    .toggle-nav {
+        display: none;
+    }
+    .nav-background {
+        background: transparent;
+    }
+    h2 {
+        padding: 20px;
     }
 }

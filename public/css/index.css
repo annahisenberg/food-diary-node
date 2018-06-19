@@ -23,7 +23,7 @@ li a {
     text-decoration: none;
     color: #c7266c;
     margin: 15px;
-    letter-spacing:  4px;
+    letter-spacing: 4px;
 }
 
 a:visited {
@@ -61,11 +61,7 @@ a:hover {
     color: #860c41;
 }
 
-.icon-spoon-knife:before {
-    content: "\e9a3";
-}
-
-.start {
+button {
     color: #c7266c;
     border: 1px solid #c7266c;
     cursor: pointer;
@@ -74,4 +70,9 @@ a:hover {
     font-size: 15px;
     text-decoration: none;
     padding: 5px;
+    position: relative;
+}
+
+button a {
+    text-decoration: none;
 }

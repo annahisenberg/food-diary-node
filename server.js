@@ -49,7 +49,7 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/html/index.html'));
 });
 
-app.get('/make-post', (req, res) => {
+app.get('/make-post', verifyToken, (req, res) => {
     res.sendFile(path.join(__dirname + '/public/html/post.html'));
 });
 

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 
-const signUpSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
 
     username: {
         type: String,
@@ -23,7 +23,7 @@ const signUpSchema = mongoose.Schema({
 });
 
 
-const User = mongoose.model('SignUp', signUpSchema);
+const User = mongoose.model('User', userSchema);
 
 
 module.exports = User;

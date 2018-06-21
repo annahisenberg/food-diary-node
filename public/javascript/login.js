@@ -1,3 +1,27 @@
+$(function() {
+    $('#form').submit((e) => {
+        e.preventDefault();
+        const email = $('.js-email-field').val();
+        const password = $('.js-password-field').val();
+
+        $.ajax({
+            url: '/api/login',
+            method: 'POST',
+            data: {
+                email: email,
+                password: password,
+            },
+            success: (response) => {
+                sessionStorage.setItem('token', response.token);
+                location.href = '/protected.html';
+            },
+            error: () => {
+                renderError();
+            }
+        })
+    })
+})
+
 function animateArrowIcon() {
     $("button").hover(function() {
         $(".fa-angle-double-right").stop().animate({

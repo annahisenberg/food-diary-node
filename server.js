@@ -55,19 +55,19 @@ app.use('*', function(req, res) {
 
 // @Description: these are the main html pages
 app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/html/index.html'));
+    res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
 app.get('/make-post', verifyToken, (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/html/post.html'));
+    res.sendFile(path.join(__dirname + '/public/post.html'));
 });
 
 app.get('/login-page', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/html/login.html'));
+    res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
 app.get('/entries-list', verifyToken, (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/html/entries.html'));
+    res.sendFile(path.join(__dirname + '/public/entries.html'));
 });
 
 

@@ -7,48 +7,51 @@ const { verifyToken } = require('../server');
 
 
 // POST routes
-router.post('/register', (req, res) => {
-    const requiredFields = ['username', 'password', 'email'];
-    for (let i = 0; i < requiredFields.length; i++) {
-        const field = requiredFields[i];
-        if (!(field in req.body)) {
-            const message = `Missing \`${field}\` in request body`;
-            console.error(message);
-            return res.status(400).send(message);
-        }
-    }
-
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(req.body.password, salt, (err, hash) => {
-            if (err) {
-                res.status(500).json({
-                    error: 'Password incorrect'
-                });
+router.route('/users')
+    //Creates a new user
+    .post((req, res) => {
+        const requiredFields = ['username', 'password', 'email'];
+        for (let i = 0; i < requiredFields.length; i++) {
+            const field = requiredFields[i];
+            if (!(field in req.body)) {
+                const message = `Missing \`${field}\` in request body`;
+                console.error(message);
+                return res.status(400).send(message);
             }
+        }
 
-            req.body.password = hash;
-
-            const newUser = {
-                email: req.body.email,
-                password: req.body.password
-            };
-
-            User.create(newUser)
-                .then((user) =>
-                    res.status(201).json({
-                        message: 'You have successfully created a new account.',
-                        user
-                    })
-                )
-                .catch((err) => {
-                    console.error(err);
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(req.body.password, salt, (err, hash) => {
+                if (err) {
                     res.status(500).json({
-                        error: 'Something went wrong'
+                        error: 'Password incorrect'
                     });
-                });
+                }
+
+                req.body.password = hash;
+
+                const newUser = {
+                    email: req.body.email,
+                    password: req.body.password
+                };
+
+                User.create(newUser)
+                    .then((user) =>
+                        res.status(201).json({
+                            message: 'You have successfully created a new account.',
+                            user
+                        })
+                    )
+                    .catch((err) => {
+                        console.error(err);
+                        res.status(500).json({
+                            error: 'Something went wrong'
+                        });
+                    });
+            });
         });
     });
-});
+
 
 
 router.post('/login', (req, res) => {

@@ -40,23 +40,24 @@ function tearDownDb() {
     return mongoose.connection.dropDatabase();
 }
 
-before(function() {
-    return runServer(TEST_DATABASE_URL);
-});
-
-beforeEach(function() {
-    return seedFakeUserDb();
-});
-
-afterEach(function() {
-    return tearDownDb();
-});
-
-after(function() {
-    return closeServer();
-});
 
 describe('User api routes', function() {
+    before(function() {
+        return runServer(TEST_DATABASE_URL);
+    });
+
+    beforeEach(function() {
+        return seedFakeUserDb();
+    });
+
+    afterEach(function() {
+        return tearDownDb();
+    });
+
+    after(function() {
+        return closeServer();
+    });
+
     describe('POST request for /register', function() {
         it('should create a new user in the database', function() {
             let newUser = generateUserData();

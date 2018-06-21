@@ -29,9 +29,8 @@ router.post('/register', (req, res) => {
             req.body.password = hash;
 
             const newUser = {
-                username: req.body.username,
-                password: req.body.password,
-                email: req.body.email
+                email: req.body.email,
+                password: req.body.password
             };
 
             User.create(newUser)
@@ -47,14 +46,12 @@ router.post('/register', (req, res) => {
                         error: 'Something went wrong'
                     });
                 });
-
         });
     });
 });
 
 
 router.post('/login', (req, res) => {
-
     const email = req.body.email;
 
     User
@@ -64,7 +61,7 @@ router.post('/login', (req, res) => {
                 return res.status(404).json({
                     message: "User not found",
                     user,
-                })
+                });
             }
 
             // compare user.password(comes from database) with req.body.password to see if they match
@@ -85,20 +82,17 @@ router.post('/login', (req, res) => {
                 });
             });
 
-            jwt.sign({ user }, 'secretkey', { expiresIn: '2 days' }, (err, token) => {
+            jwt.sign({ user }, process.env.SECRET, { expiresIn: '2 days' }, (err, token) => {
                 res.json({
                     token
                 });
             });
-
-
-
         })
         .catch(err => {
             res.status(500).json({
                 message: "Something went wrong",
                 err
-            })
+            });
         });
 });
 

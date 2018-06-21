@@ -6,8 +6,8 @@ const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { DATABASE_URL, PORT } = require('./config');
-const DiaryPost = require('./models/models-diary-post');
-const User = require('./models/models-sign-up');
+const DiaryPost = require('./models/diarypost-model');
+const User = require('./models/user-model');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { router: userRouter } = require('./routers/user-router');
@@ -114,5 +114,6 @@ function closeServer() {
 if (require.main === module) {
     runServer(DATABASE_URL).catch(err => console.error(err));
 }
+
 
 module.exports = { app, verifyToken, runServer, closeServer };

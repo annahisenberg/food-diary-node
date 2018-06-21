@@ -5,6 +5,8 @@ const DiaryPost = require('../models/diarypost-model');
 const router = express.Router();
 const { verifyToken } = require('../server');
 
+console.log("verifyToken:", verifyToken);
+
 //Gets all entries
 router.get('/entries', verifyToken, (req, res) => {
     DiaryPost.find()

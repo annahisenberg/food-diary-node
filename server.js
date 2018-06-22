@@ -12,6 +12,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { router: userRouter } = require('./routers/user-router');
 const { router: diaryPostRouter } = require('./routers/diarypost-router');
+const { router: authRouter, localStrategy, jwtStrategy } = require('./auth/strategies');
 
 
 //Middleware
@@ -20,26 +21,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-
-//Verify Token
-function verifyToken(req, res, next) {
-    // Get auth header value
-    const bearerHeader = req.headers['authorization'];
-    //Check if bearer is undefined
-    if (typeof bearerHeader !== 'undefined') {
-        // Split at the space
-        const bearer = bearerHeader.split(' ');
-        //Get token from array
-        const bearerToken = bearer[1];
-        //Set the token
-        req.token = bearerToken;
-        //Next middleware
-        next();
-    } else {
-        // forbidden
-        res.sendStatus(403);
-    }
-}
+passport.use(localStrategy);
+passport.use(jwtStrategy);
 
 // Routes
 app.use('/api', userRouter);
@@ -52,13 +35,14 @@ app.use('*', function(req, res) {
     });
 });
 
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
 // @Description: these are the main html pages
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
-app.get('/make-post', verifyToken, (req, res) => {
+app.get('/make-post', jwtAuth, (req, res) => {
     res.sendFile(path.join(__dirname + '/public/post.html'));
 });
 
@@ -66,7 +50,7 @@ app.get('/login-page', (req, res) => {
     res.sendFile(path.join(__dirname + '/public/login.html'));
 });
 
-app.get('/entries-list', verifyToken, (req, res) => {
+app.get('/entries-list', jwtAuth, (req, res) => {
     res.sendFile(path.join(__dirname + '/public/entries.html'));
 });
 

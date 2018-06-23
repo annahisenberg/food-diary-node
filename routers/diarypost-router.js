@@ -4,6 +4,7 @@ const express = require('express');
 const DiaryPost = require('../models/diarypost-model');
 const router = express.Router();
 const { verifyToken } = require('../server');
+const passport = require('passport');
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 

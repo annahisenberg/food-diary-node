@@ -12,7 +12,16 @@ function animateArrowIcon() {
     });
 }
 
+function burgerNav() {
+    $('.toggle-nav').click(function() {
+        $('nav ul').toggleClass("show-nav");
+        $('nav ul li').addClass("nav-background");
+    })
+}
+
+
 //  on page load do this
 $(function() {
     animateArrowIcon();
+    burgerNav();
 })

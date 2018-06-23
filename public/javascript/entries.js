@@ -43,7 +43,7 @@ var MOCK_DIARY_ENTRIES = {
 };
 
 function getAndDisplayDiaryEntries() {
-    setTimeout(function () {
+    setTimeout(function() {
         displayResults(MOCK_DIARY_ENTRIES)
     }, 1);
 }
@@ -55,13 +55,21 @@ function displayResults(data) {
 }
 
 function handleClickedDiv() {
-    $('main').on('click', '.card', function () {
+    $('main').on('click', '.card', function() {
         window.location = '../html/index.html';
     });
 }
 
+function burgerNav() {
+    $('.toggle-nav').click(function() {
+        $('nav ul').toggleClass("show-nav");
+        $('nav ul li').addClass("nav-background");
+    })
+}
+
 //  on page load do this
-$(function () {
+$(function() {
     getAndDisplayDiaryEntries();
     handleClickedDiv();
+    burgerNav();
 })

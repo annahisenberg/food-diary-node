@@ -1,9 +1,11 @@
 * {
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
     font-size: 18px;
     margin: 0;
 }
+
+
+/* nav styles */
 
 nav .container {
     margin-top: 0px;
@@ -11,9 +13,37 @@ nav .container {
     justify-content: center;
 }
 
-.container li {
+nav {
+    width: 100%;
+}
+
+nav ul {
     list-style-type: none;
-    margin: 5px;
+    display: none;
+}
+
+nav ul li {
+    text-align: center;
+}
+
+.show-nav {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin-top: 0;
+    padding-left: 0;
+}
+
+.nav-background {
+    background: #fff;
+    width: 100%;
+    margin-bottom: 1px;
+}
+
+.toggle-nav {
+    text-decoration: none;
+    display: block;
+    background: #fff;
 }
 
 li a {
@@ -27,12 +57,39 @@ a:visited {
     color: #c7266c;
 }
 
+a:hover {
+    color: #810c3f;
+}
+
+
+/* body/html styles */
+
 body,
 html {
     height: 100%;
     background: #f3f2f2;
     margin: 5px;
 }
+
+
+/* add button  */
+
+button {
+    background: #2cea2c;
+    color: white;
+    border-radius: 50%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #129712;
+}
+
+
+/* card styles */
 
 .card {
     background: white;
@@ -45,9 +102,10 @@ html {
 h1 {
     text-align: center;
     color: #ff007d;
-    font-size: 50px;
+    font-size: 82px;
     margin-top: 18px;
     margin-bottom: 10px;
+    font-family: 'Niconne', cursive;
 }
 
 .card img {
@@ -72,5 +130,21 @@ h1 {
     .card:hover {
         transform: scale(1.01);
         cursor: pointer;
+    }
+    .nav-container {
+        margin-top: 0px;
+        display: flex;
+        justify-content: center;
+        padding-left: 0px;
+    }
+    .nav-container li {
+        list-style-type: none;
+        margin: 5px;
+    }
+    .toggle-nav {
+        display: none;
+    }
+    .nav-background {
+        background: transparent;
     }
 }

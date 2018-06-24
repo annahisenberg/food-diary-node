@@ -54,12 +54,6 @@ function displayResults(data) {
     }
 }
 
-function handleClickedDiv() {
-    $('main').on('click', '.card', function() {
-        window.location = '../html/index.html';
-    });
-}
-
 function burgerNav() {
     $('.toggle-nav').click(function() {
         $('nav ul').toggleClass("show-nav");
@@ -67,16 +61,27 @@ function burgerNav() {
     })
 }
 
+function lightbox() {
+    $("main").on('click', '.card', function() {
+        $("#lightbox, #lightbox-panel").fadeIn(300);
+        $('#lightbox-panel').html(`<h2>${data.diaryEntries.title}</h2><p>${data.diaryEntries.Breakfast}</p><p>${data.diaryEntries.Lunch}</p><p>${data.diaryEntries.Dinner}</p><p>${data.diaryEntries.Snacks}</p>`);
+    });
+
+    $("a#close-panel").click(function() {
+        $("#lightbox, #lightbox-panel").fadeOut(300);
+    });
+}
+
 function redirectToPostPage() {
     $('button').click(function() {
-        window.location.href = '../post.html';
+        window.location = '../post.html';
     });
 }
 
 //  on page load do this
 $(function() {
     getAndDisplayDiaryEntries();
-    handleClickedDiv();
     burgerNav();
     redirectToPostPage();
+    lightbox();
 })

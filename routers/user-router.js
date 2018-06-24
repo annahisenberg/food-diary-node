@@ -4,12 +4,17 @@ const express = require('express');
 const User = require('../models/user-model');
 const router = express.Router();
 const passport = require('passport');
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET, JWT_EXPIRY } = require('../config');
+
 
 // This creates the token that the user needs to access protected routes. Use this for /login route
 const createAuthToken = function(user) {
-    return jwt.sign({ user }, config.JWT_SECRET, {
-        subject: user.username,
-        expiresIn: config.JWT_EXPIRY,
+    console.log(user);
+
+    return jwt.sign({ user }, JWT_SECRET, {
+        subject: user.email,
+        expiresIn: JWT_EXPIRY,
         algorithm: 'HS256'
     });
 };
@@ -76,6 +81,7 @@ router.get('/users', (req, res) => {
         });
 });
 
+// @CREATE NEW USER
 router.post('/users', (req, res) => {
     const email = req.body.email;
     const pass = req.body.password;

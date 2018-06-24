@@ -22,6 +22,8 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+console.log(localStrategy);
+
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 

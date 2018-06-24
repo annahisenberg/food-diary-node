@@ -6,12 +6,11 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET, JWT_EXPIRY } = require('../config');
+const jwtAuth = passport.authenticate('jwt', { session: false });
 
 
 // This creates the token that the user needs to access protected routes. Use this for /login route
 const createAuthToken = function(user) {
-    console.log(user);
-
     return jwt.sign({ user }, JWT_SECRET, {
         subject: user.email,
         expiresIn: JWT_EXPIRY,
@@ -20,7 +19,7 @@ const createAuthToken = function(user) {
 };
 
 
-router.put('/users/:id', (req, res) => {
+router.put('/users/:id', jwtAuth, (req, res) => {
     //Make sure there is an id in req.params & req.body and make sure they match
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
         return res.status(400).json({
@@ -53,7 +52,8 @@ router.put('/users/:id', (req, res) => {
         });
 });
 
-router.delete('/users/:id', (req, res) => {
+//delete user by id
+router.delete('/users/:id', jwtAuth, (req, res) => {
     User
         .findByIdAndRemove(req.params.id).then(() => {
             console.log(`Deleted user with id \`${req.params.id}\``);
@@ -65,9 +65,8 @@ router.delete('/users/:id', (req, res) => {
 });
 
 
-
-// POST routes
-router.get('/users', (req, res) => {
+//get all users
+router.get('/users', jwtAuth, (req, res) => {
     User
         .find()
         .then((users) => {
@@ -118,7 +117,7 @@ router.post('/users', (req, res) => {
             }
             res.status(500).json({ code: 500, message: 'Internal server error' });
         });
-})
+});
 
 
 

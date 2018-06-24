@@ -3,9 +3,7 @@
 const express = require('express');
 const DiaryPost = require('../models/diarypost-model');
 const router = express.Router();
-const { verifyToken } = require('../server');
 const passport = require('passport');
-
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
 //Once user's token expires and they need a new one, do this:

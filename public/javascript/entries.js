@@ -67,9 +67,16 @@ function burgerNav() {
     })
 }
 
+function redirectToPostPage() {
+    $('button').click(function() {
+        window.location.href = '../post.html';
+    });
+}
+
 //  on page load do this
 $(function() {
     getAndDisplayDiaryEntries();
     handleClickedDiv();
     burgerNav();
+    redirectToPostPage();
 })

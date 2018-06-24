@@ -6,7 +6,8 @@ function burgerNav() {
 }
 
 function addMorePics() {
-    $('.img-btn').click(function() {
+    $('.img-btn').click(function(e) {
+        e.preventDefault();
         $('.addMorePics').append('<input type="file" name="pic" accept="image/*">');
     });
 }

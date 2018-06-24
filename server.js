@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const { DATABASE_URL, PORT } = require('./config');
 const DiaryPost = require('./models/diarypost-model');
 const User = require('./models/user-model');
+const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { router: userRouter } = require('./routers/user-router');
@@ -100,4 +101,4 @@ if (require.main === module) {
 }
 
 
-module.exports = { app, verifyToken, runServer, closeServer };
+module.exports = { app, runServer, closeServer };

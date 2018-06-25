@@ -6,10 +6,12 @@ const mongoose = require('mongoose');
 const expect = chai.expect;
 const should = require('chai').should();
 const faker = require('faker');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
 
 const User = require('../models/user-model');
-const { app, runServer, closeServer, verifyToken } = require('../server');
-const { TEST_DATABASE_URL } = require('../config');
+const { app, runServer, closeServer, } = require('../server');
+const { TEST_DATABASE_URL, JWT_SECRET } = require('../config');
 
 
 chai.use(chaiHttp);
@@ -58,11 +60,84 @@ describe('User api routes', function() {
         return closeServer();
     });
 
-    describe('POST request for /register', function() {
+    //works
+    describe('GET all users in database', function() {
+        it('should get all users in the database', function() {
+            let user = generateUserData();
+            var token = jwt.sign({ user }, JWT_SECRET);
+
+            return chai.request(app)
+                .get('/api/users')
+                .set('Content-Type', 'application/json')
+                .set('Accept', 'application/json')
+                .set('Authorization', `Bearer ${token}`)
+                .then(res => {
+                    res.should.have.status(200);
+                    res.should.be.json;
+                });
+        });
+    });
+
+    //works
+    describe('DELETE request for /users/:id', function() {
+        it('should delete a user from the database', function() {
+            let deletedUser;
+            let user = generateUserData();
+            var token = jwt.sign({ user }, JWT_SECRET);
+
+            User
+                .findOne()
+                .then(user => {
+                    deletedUser = user._id;
+                    return chai.request(app)
+                        .delete(`/users/${deletedUser}`)
+                        .set('Authorization', `Bearer ${token}`)
+                })
+                .then(res => {
+                    res.should.have.status(204);
+                    return User.findById(deletedUser);
+                })
+                .then(deleted => {
+                    should.not.exist(deleted);
+                });
+
+        });
+    });
+
+
+    describe('PUT request for /users/:id', function() {
+        it('should update a user in the database with a specific id', function() {
+            let user = generateUserData();
+            var token = jwt.sign({ user }, JWT_SECRET);
+
+            let updateData = {
+                email: faker.internet.email()
+            }
+
+            User
+                .findOne()
+                .then(user => {
+                    return chai.request(app)
+                        .put(`/users/${user.id}`)
+                        .set('Authorization', `Bearer ${token}`)
+                        .send(updateData);
+                })
+                .then(res => {
+                    res.should.have.status(204);
+                })
+                .then(updatedUser => {
+                    updatedUser.should.deep.equal(updateData);
+                });
+
+        });
+    });
+
+    //works
+    describe('POST request for /users', function() {
         it('should create a new user in the database', function() {
             let newUser = generateUserData();
             return chai.request(app)
-                .post('/register')
+                .post('/api/users')
                 .send(newUser)
                 .then(function(res) {
                     res.should.have.status(201);
@@ -71,17 +146,19 @@ describe('User api routes', function() {
         });
     });
 
-    describe('Login API', function() {
-        it('should login user', function() {
-            return chai.request(app)
-                .post('/login')
-                .set('Accept', 'application/json')
-                .set('Content-Type', 'application/json')
-                .send({ email: 'email', password: 'password' })
-                .then(res => {
-                    res.should.have.status(200)
-                    res.should.be.json;
-                });
-        });
-    });
+
+    // describe('POST request to /login', function() {
+    //     it('should login user', function() {
+    //         let user = generateUserData();
+
+    //         return chai.request(app)
+    //             .post('/login')
+    //             .set('Content-Type', 'application/x-www-form-urlencoded')
+    //             .send({ user })
+    //             .then(res => {
+    //                 res.should.have.status(200)
+    //                 res.should.be.json;
+    //             });
+    //     });
+    // });
 });

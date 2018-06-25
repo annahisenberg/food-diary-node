@@ -18,7 +18,7 @@ const createAuthToken = function(user) {
     });
 };
 
-
+//Update user
 router.put('/users/:id', jwtAuth, (req, res) => {
     //Make sure there is an id in req.params & req.body and make sure they match
     if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
@@ -121,7 +121,7 @@ router.post('/users', (req, res) => {
 
 
 
-
+//login user
 const localAuth = passport.authenticate('local', { session: false });
 
 router.post('/login', localAuth, (req, res) => {

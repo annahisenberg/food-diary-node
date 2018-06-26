@@ -7,12 +7,13 @@ const diaryPostSchema = mongoose.Schema({
     lunch: String,
     dinner: String,
     snacks: String,
-    // timestamps: true,
     calories: Number,
     img: {
         type: Buffer,
         required: false
     }
+}, {
+    timestamps: true
 });
 
 const DiaryPost = mongoose.model('DiaryPost', diaryPostSchema);

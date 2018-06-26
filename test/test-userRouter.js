@@ -147,18 +147,18 @@ describe('User api routes', function() {
     });
 
 
-    // describe('POST request to /login', function() {
-    //     it('should login user', function() {
-    //         let user = generateUserData();
+    describe('POST request to /login', function() {
+        it('should login user', function() {
+            let user = generateUserData();
 
-    //         return chai.request(app)
-    //             .post('/login')
-    //             .set('Content-Type', 'application/x-www-form-urlencoded')
-    //             .send({ user })
-    //             .then(res => {
-    //                 res.should.have.status(200)
-    //                 res.should.be.json;
-    //             });
-    //     });
-    // });
+            return chai.request(app)
+                .post('/api/login')
+                .set('Content-Type', 'application/x-www-form-urlencoded')
+                .send({ user })
+                .then(res => {
+                    res.should.have.status(200)
+                    res.should.be.json;
+                });
+        });
+    });
 });

@@ -90,20 +90,30 @@ a:hover {
     color: #860c41;
 }
 
-button {
-    color: #c7266c;
-    border: 1px solid #c7266c;
-    cursor: pointer;
-    outline: none;
-    border-radius: 20px;
-    font-size: 15px;
-    text-decoration: none;
-    padding: 5px;
+.h1-btn-container {
     position: relative;
+    bottom: 70px;
 }
 
-button a {
-    text-decoration: none;
+
+/* button rules */
+
+button {
+    cursor: pointer;
+    width: 50%;
+    border: 1px solid #c7266c;
+    color: #c7266c;
+    transition: all 0.5s;
+    border-radius: 25px;
+    background: transparent;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 15px;
+    padding: 9px;
+    outline: none;
+}
+
+.fa-angle-double-right {
+    position: relative;
 }
 
 

@@ -98,6 +98,13 @@ button:hover {
     display: flex;
 }
 
+header div p {
+    color: #ff007d;
+    font-family: Arial;
+    position: relative;
+    top: 10px;
+}
+
 
 /* card styles */
 

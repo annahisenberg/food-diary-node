@@ -12,6 +12,8 @@ function addMorePics() {
     });
 }
 
+// If there are already posts in the database, change h1 to say "Make a new post"
+
 
 //  on page load do this
 $(function() {

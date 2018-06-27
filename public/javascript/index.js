@@ -12,13 +12,6 @@ function animateArrowIcon() {
     });
 }
 
-function redirectToPostPage() {
-    $('button').click(function() {
-        console.log("clicked");
-        window.location = '../login.html';
-    });
-}
-
 function burgerNav() {
     $('.toggle-nav').click(function() {
         $('nav ul').toggleClass("show-nav");

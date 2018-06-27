@@ -82,6 +82,7 @@ textarea {
     padding: 3px 0px 3px 3px;
     margin: 5px 1px 3px 0px;
     border: 1px solid #DDDDDD;
+    /* padding:  10px; */
 }
 
 input[type=text]:focus,
@@ -90,6 +91,10 @@ textarea:focus {
     padding: 3px 0px 3px 3px;
     margin: 5px 1px 3px 0px;
     border: 1px solid rgb(81, 238, 115);
+}
+
+input[type=file] {
+    display: block;
 }
 
 .submit_btn {

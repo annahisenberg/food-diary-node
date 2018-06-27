@@ -36,7 +36,7 @@ nav ul li {
 
 .nav-background {
     background: #fff;
-    width: 100%;
+    /* width: 100%; */
     margin-bottom: 1px;
 }
 
@@ -53,10 +53,6 @@ li a {
     letter-spacing: 4px;
 }
 
-a:visited {
-    color: #c7266c;
-}
-
 a:hover {
     color: #810c3f;
 }
@@ -68,7 +64,7 @@ body,
 html {
     height: 100%;
     background: #f3f2f2;
-    margin: 5px;
+    /* margin: 5px; */
 }
 
 
@@ -78,7 +74,7 @@ button {
     background: rgb(81, 238, 115);
     color: white;
     border-radius: 50%;
-    padding: 10px 15px;
+    padding: 15px 20px;
     margin-bottom: 10px;
     border: none;
     cursor: pointer;
@@ -87,6 +83,9 @@ button {
     transition: 0.3s linear;
     margin-bottom: 25px;
     margin-right: 5px;
+    font-size: 20px;
+    position: relative;
+    left: 11px;
 }
 
 button:hover {
@@ -105,17 +104,6 @@ header div p {
     top: 10px;
 }
 
-
-/* card styles */
-
-.card {
-    background: white;
-    border-radius: 3px;
-    /* border: 3px solid rgb(255, 129, 25); */
-    padding: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
 h1 {
     text-align: center;
     color: #ff007d;
@@ -125,12 +113,26 @@ h1 {
     font-family: 'Niconne', cursive;
 }
 
+
+/* card styles */
+
+.card {
+    background: white;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .card img {
     width: 100%;
 }
 
 .card p {
     text-align: center;
+    font-family: Arial;
+    margin-bottom: 5px;
+    color: #ff007d;
 }
 
 
@@ -173,7 +175,7 @@ h1 {
     }
     .card {
         flex: 1 1 450px;
-        margin: 10px;
+        margin: 20px;
         transition: all .3s;
     }
     .card:hover {

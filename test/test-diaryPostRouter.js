@@ -120,7 +120,7 @@ describe('DiaryPost API', function() {
         })
     });
 
-
+    //works
     describe('GET all entries endpoint', function() {
         it('should return all existing diary posts', function() {
             let user = generateUserData();
@@ -135,11 +135,11 @@ describe('DiaryPost API', function() {
                 .then(function(_res) {
                     res = _res;
                     res.should.have.status(200);
-                    expect(res.body.posts).to.have.lengthOf.at.least(1);
+                    expect(res.body).to.have.lengthOf.at.least(1);
                     return DiaryPost.count();
                 })
                 .then(function(count) {
-                    expect(res.body.posts).to.have.lengthOf(count);
+                    expect(res.body).to.have.lengthOf(count);
                 });
         });
     });
@@ -187,11 +187,13 @@ describe('DiaryPost API', function() {
                     updateData._id = entry._id;
                     return chai.request(app)
                         .put(`/api/posts/${entry._id}`)
+                        .set('Content-Type', 'application/json')
+                        .set('Accept', 'application/json')
                         .set('Authorization', `Bearer ${token}`)
                         .send(updateData);
                 })
                 .then(function(res) {
-                    expect(res).to.have.status(204);
+                    expect(res).to.have.status(200);
 
                     return DiaryPost.findById(updateData._id);
                 })

@@ -31,12 +31,6 @@ passport.use(jwtStrategy);
 app.use('/api', userRouter);
 app.use('/api', diaryPostRouter);
 
-//If user goes to unknown route, then this error message will show
-app.use('*', function(req, res) {
-    res.status(404).json({
-        message: 'Not Found'
-    });
-});
 
 const jwtAuth = passport.authenticate('jwt', { session: false });
 
@@ -56,6 +50,15 @@ app.get('/login-page', (req, res) => {
 app.get('/entries-list', jwtAuth, (req, res) => {
     res.sendFile(path.join(__dirname + '/public/entries.html'));
 });
+
+
+//If user goes to unknown route, then this error message will show
+app.use('*', function(req, res) {
+    res.status(404).json({
+        message: 'Not Found'
+    });
+});
+
 
 
 // closeServer needs access to a server object, but that only

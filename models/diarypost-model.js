@@ -9,7 +9,7 @@ const diaryPostSchema = mongoose.Schema({
     snacks: String,
     calories: Number,
     img: {
-        type: Buffer,
+        type: String,
         required: false
     }
 }, {

@@ -102,7 +102,6 @@ button {
     cursor: pointer;
     width: 50%;
     border: 1px solid #c7266c;
-    color: #c7266c;
     transition: all 0.5s;
     border-radius: 25px;
     background: transparent;
@@ -110,6 +109,15 @@ button {
     font-size: 15px;
     padding: 9px;
     outline: none;
+}
+
+button a {
+    text-decoration: none;
+    color: #c7266c;
+}
+
+button a:hover {
+    color: #c7266c;
 }
 
 .fa-angle-double-right {

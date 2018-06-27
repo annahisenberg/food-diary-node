@@ -30,13 +30,13 @@ router.route('/posts')
 // Make diary post 
 .post(jwtAuth, (req, res) => {
     const payload = {
-        breakfast: req.body.breakfast_input,
-        lunch: req.body.lunch_input,
-        dinner: req.body.dinner_input,
-        snacks: req.body.snacks_input,
+        breakfast: req.body.breakfast,
+        lunch: req.body.lunch,
+        dinner: req.body.dinner,
+        snacks: req.body.snacks,
         // timestamps: req.body.date_input,
-        calories: req.body.calories_input,
-        img: req.body.pic
+        calories: req.body.calories,
+        img: req.body.img
     };
     DiaryPost.create(payload)
         .then((post) => res.status(201).json(post))
@@ -67,7 +67,7 @@ router.route('/posts/:id')
     .put(jwtAuth, (req, res) => {
         console.log(req.params.id, req.body.id);
 
-        if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+        if (!(req.params.id && req.body._id && req.params.id === req.body._id)) {
             return res.status(400).json({
                 error: 'Request path id and request body id values must match'
             });

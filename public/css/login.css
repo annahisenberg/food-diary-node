@@ -17,7 +17,6 @@ html {
 
 nav ul {
     list-style-type: none;
-    display: none;
 }
 
 nav ul li {
@@ -26,27 +25,9 @@ nav ul li {
 
 li a {
     text-decoration: none;
-    color: #324D5C;
+    color: rgb(169, 56, 66);
     margin: 15px;
     letter-spacing: 3px;
-}
-
-.show-nav {
-    display: block;
-    position: absolute;
-    margin-top: 0;
-    padding-left: 0;
-}
-
-.nav-background {
-    background: #fff;
-    margin-bottom: 1px;
-}
-
-.toggle-nav {
-    text-decoration: none;
-    display: block;
-    background: #fff;
 }
 
 li a:visited {
@@ -54,7 +35,7 @@ li a:visited {
 }
 
 a:hover {
-    color: #b5b4b2;
+    color: rgb(232, 0, 21);
 }
 
 
@@ -112,12 +93,17 @@ button {
     margin-top: 25px;
     border: none;
     color: white;
-    transition: all 0.5s;
     border-radius: 25px;
     background: rgb(255, 72, 88);
     background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin-left: 20px;
+    transition: all 2s;
+}
+
+button:hover {
+    background: rgba(238, 251, 108, 1);
+    background: linear-gradient(90deg, rgba(238, 251, 108, 1) 0%, rgba(255, 72, 88, 1) 100%);
 }
 
 .fa-angle-double-right {
@@ -203,9 +189,6 @@ span {
     .nav-container li {
         list-style-type: none;
         margin: 5px;
-    }
-    .toggle-nav {
-        display: none;
     }
     .nav-background {
         background: transparent;

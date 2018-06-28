@@ -29,13 +29,13 @@ nav ul li {
 
 li a {
     text-decoration: none;
-    color: green;
+    color: #fff;
     margin: 15px;
     letter-spacing: 3px;
 }
 
 li a:visited {
-    color: green;
+    color: #fff;
 }
 
 li a:hover {
@@ -51,15 +51,16 @@ li a:hover {
 }
 
 .nav-background {
-    background: #fff;
+    background: orangered;
     width: 100%;
     margin-bottom: 1px;
+    /* color: #fff; */
 }
 
 .toggle-nav {
     text-decoration: none;
     display: block;
-    background: #fff;
+    background: orangered;
 }
 
 
@@ -100,6 +101,15 @@ input[type=file] {
     display: block;
 }
 
+input[type=date] {
+    border: 1px solid #DDDDDD;
+    margin-bottom:  10px;
+}
+
+input[type=number] {
+    border: 1px solid #DDDDDD;
+}
+
 .submit_btn {
     background: rgb(81, 238, 115);
     outline: none;
@@ -120,6 +130,7 @@ input[type=file] {
 label {
     font-size: 15px;
     color: #989696;
+    /* margin-top: 25px; */
 }
 
 form {
@@ -144,17 +155,22 @@ h1 {
 }
 
 .img-btn {
-    background: rgb(61, 187, 89);
+    /* background: rgb(61, 187, 89); */
+    border: 2px solid rgb(61, 187, 89);
     outline: none;
-    color: white;
+    color: rgb(61, 187, 89);
     border-radius: 20px;
-    padding: 7px;
+    padding: 3px;
     font-size: 11px;
     margin-top: 10px;
-    margin-bottom: 10px;
-    border: none;
+    margin-bottom: 17px;
+    /* border: none; */
     cursor: pointer;
-    transition: 0.3s linear;
+    transition: all 0.2s;
+}
+
+.img-btn:hover {
+    box-shadow: 0 0 0 1px #fdfdfd, 0 0 0 3px #2cb996;
 }
 
 

@@ -51,7 +51,7 @@ li a:visited {
 }
 
 a:hover {
-    color: #b5b4b2;
+    color: #860c41;
 }
 
 
@@ -69,12 +69,20 @@ html {
     margin: 0;
 }
 
+
+/* main styles */
+
 h1 {
     color: #c7266c;
-    font-size: 45px;
+    /* font-size: 45px; */
     letter-spacing: 4px;
     font-family: 'Niconne', cursive;
-    font-size: 59px;
+    font-size: 67px;
+}
+
+.h1-btn-container {
+    position: relative;
+    bottom: 70px;
 }
 
 main {
@@ -86,17 +94,8 @@ main {
     height: 100px;
 }
 
-a:hover {
-    color: #860c41;
-}
 
-.h1-btn-container {
-    position: relative;
-    bottom: 70px;
-}
-
-
-/* button rules */
+/* get started button rules */
 
 button {
     cursor: pointer;

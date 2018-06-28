@@ -12,17 +12,12 @@ function animateArrowIcon() {
     });
 }
 
-function burgerNav() {
-    $('.toggle-nav').click(function() {
-        $('nav ul').toggleClass("show-nav");
-        $('nav ul li').addClass("nav-background");
-    })
-}
+//If user is logged in, "get started" button should redirect to "entries.html". Else, button should redirect to "login.html"
+
 
 
 //  on page load do this
 $(function() {
     animateArrowIcon();
-    burgerNav();
     redirectToPostPage();
 })

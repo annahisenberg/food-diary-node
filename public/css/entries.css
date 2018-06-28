@@ -68,7 +68,7 @@ html {
 }
 
 
-/* add button  */
+/* add new post green button  */
 
 button {
     background: rgb(81, 238, 115);
@@ -88,21 +88,22 @@ button {
     left: 11px;
 }
 
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+button a:visited {
+    color: white;
+}
+
 button:hover {
     transform: translatey(2px);
     background: #129712;
 }
 
-.new-post-container {
-    display: flex;
-}
 
-header div p {
-    color: #ff007d;
-    font-family: Arial;
-    position: relative;
-    top: 10px;
-}
+/* header styles */
 
 h1 {
     text-align: center;
@@ -166,6 +167,9 @@ h1 {
     border: 2px solid #CCCCCC;
     z-index: 1001;
 }
+
+
+/* media queries */
 
 @media only screen and (min-width: 768px) {
     main {

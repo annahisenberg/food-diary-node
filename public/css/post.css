@@ -72,6 +72,10 @@ input {
     border-radius: 10px;
 }
 
+textarea {
+    width: 80%;
+}
+
 input[type=text],
 textarea {
     -webkit-transition: all 0.30s ease-in-out;
@@ -82,7 +86,6 @@ textarea {
     padding: 3px 0px 3px 3px;
     margin: 5px 1px 3px 0px;
     border: 1px solid #DDDDDD;
-    /* padding:  10px; */
 }
 
 input[type=text]:focus,
@@ -123,7 +126,6 @@ form {
     background: white;
     text-align: center;
     padding-bottom: 40px;
-    border-radius: 10px;
 }
 
 h1 {
@@ -146,7 +148,8 @@ h1 {
     outline: none;
     color: white;
     border-radius: 20px;
-    padding: 4px;
+    padding: 7px;
+    font-size: 11px;
     margin-top: 10px;
     margin-bottom: 10px;
     border: none;
@@ -187,5 +190,8 @@ h1 {
         display: flex;
         padding: 20px;
         justify-content: center;
+    }
+    form {
+        border-radius: 10px;
     }
 }

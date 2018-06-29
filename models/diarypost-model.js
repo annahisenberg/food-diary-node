@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const diaryPostSchema = mongoose.Schema({
+    title: String,
     breakfast: String,
     lunch: String,
     dinner: String,

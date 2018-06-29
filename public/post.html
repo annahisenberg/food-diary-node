@@ -31,39 +31,50 @@
 
         <form action="" method="post">
             <h1>Start your food diary now!</h1>
+
             <div>
-                <input class="title" id="msg" name="title_input" type="text" placeholder="Post title">
+                <input class="js-title" id="msg" name="title_input" type="text" placeholder="Post title">
             </div>
+
             <div>
-                <textarea rows="3" cols="60" id="msg" name="breakfast_input" placeholder="What did you have for breakfast?"></textarea>
+                <textarea class="js-breakfast" rows="3" cols="60" id="msg" name="breakfast_input" placeholder="What did you have for breakfast?"></textarea>
             </div>
+
             <div>
-                <textarea rows="3" cols="60" id="msg" name="lunch_input" placeholder="What did you have for lunch?"></textarea>
+                <textarea class="js-lunch" rows="3" cols="60" id="msg" name="lunch_input" placeholder="What did you have for lunch?"></textarea>
             </div>
+
             <div>
-                <textarea rows="3" cols="60" id="msg" name="dinner_input" placeholder="What did you have for dinner?"></textarea>
+                <textarea class="js-dinner" rows="3" cols="60" id="msg" name="dinner_input" placeholder="What did you have for dinner?"></textarea>
             </div>
+
             <div>
-                <textarea rows="3" cols="60" id="msg" name="snacks_input" placeholder="What did you have for snacks?"></textarea>
+                <textarea class="js-snacks" rows="3" cols="60" id="msg" name="snacks_input" placeholder="What did you have for snacks?"></textarea>
             </div>
+
             <div>
                 <div class="addMorePics">
-                    <input type="file" name="pic" accept="image/*">
+                    <input class="js-img" type="file" name="pic" accept="image/*">
                 </div>
                 <button class="img-btn">Add another image</button>
             </div>
+
             <div>
-                <input id="date" type="date" name="date_input">
+                <input id="date" class="js-date" type="date" name="date_input">
             </div>
+
             <div>
                 <label for="Calories">Calories</label>
                 <br>
-                <input type="number" name="calories_input" min="1" max="3000">
+                <input class="js-calories" type="number" name="calories_input" min="1" max="3000">
             </div>
+
             <div>
                 <button class="submit_btn" type="submit">Submit</button>
             </div>
         </form>
+
+
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>

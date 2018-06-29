@@ -34,7 +34,6 @@ router.route('/posts')
         lunch: req.body.lunch,
         dinner: req.body.dinner,
         snacks: req.body.snacks,
-        // timestamps: req.body.date_input,
         calories: req.body.calories,
         img: req.body.img
     };

@@ -1,59 +1,62 @@
-// function onSignUpClick() {
-//     $('.sign-up').click(function() {
-//         $('form').submit((e) => {
-//             e.preventDefault();
-//             const email = $('.js-email-field').val();
-//             const password = $('.js-password-field').val();
-
-//             console.log(email, password);
-
-
-//             $.ajax({
-//                 url: '/api/users',
-//                 method: 'POST',
-//                 data: {
-//                     email: email,
-//                     password: password,
-//                 },
-//                 success: (response) => {
-//                     console.log(response);
-
-//                     sessionStorage.setItem('token', response.token);
-//                     location.href = '/entries.html';
-//                 },
-//                 error: (err) => {
-//                     // renderError();
-//                     console.log(err);
-//                 }
-//             });
-//         });
-//     });
-// }
-
-function onLoginClick() {
-    $('#login-form').submit((e) => {
+function onSignUp() {
+    $('#signup-form').submit((e) => {
         e.preventDefault();
+
         const email = $('.js-email-field').val();
         const password = $('.js-password-field').val();
+        const repeat = $('.js-repeat-password-field').val();
+        console.log(email);
 
-        console.log(email, password);
+
+        $.ajax({
+            url: '/api/users',
+            method: 'POST',
+            data: {
+                email: email,
+                password: password,
+                passwordTwo: repeat
+            },
+            success: (response) => {
+                if (response) {
+                    $('#thank-you-msg').append('<p>Thank you for signing up! Now you can login to access the rest of the website.</p>');
+                    $('.js-email-field').val('');
+                    $('.js-password-field').val('');
+                    $('.js-repeat-password-field').val('');
+                }
+                sessionStorage.setItem('token', response.token);
+                // location.href = '/entries.html';
+            },
+            error: (err) => {
+                // renderError();
+            }
+        });
+    });
+}
+
+function onLogin() {
+    $('#login-form').submit((e) => {
+        console.log("hi");
+
+        e.preventDefault();
+
+        const username = $('.js-email-field2').val();
+        const password = $('.js-password-field2').val();
 
         $.ajax({
             url: '/api/login',
             method: 'POST',
             data: {
-                email: email,
+                username: username,
                 password: password,
             },
             success: (response) => {
                 console.log(response);
 
-                sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('token', response.authToken);
                 location.href = '/entries.html';
             },
             error: (err) => {
                 // renderError();
-                console.log(err);
             }
         });
     });
@@ -74,25 +77,42 @@ function animateArrowIcon() {
 }
 
 function addSelectClassToSignUp() {
-    $('.sign-up').click(function() {
+    $('.js-show-register-form').click(function() {
         $(this).addClass('selected');
-        $('.login-link').removeClass('selected');
+        $('.js-show-login-form').removeClass('selected');
     });
 }
 
 function addSelectClassToLoginLink() {
-    $('.login-link').click(function() {
+    $('.js-show-login-form').click(function() {
         $(this).addClass('selected');
-        $('.sign-up').removeClass('selected');
+        $('.js-show-register-form').removeClass('selected');
     });
 }
 
+function slideDown() {
+    $('.js-show-login-form').click(function(e) {
+        e.preventDefault();
+        $('#signup-form').slideUp();
+        $('#login-form').slideDown();
+    })
+}
+
+function slideUp() {
+    $('.js-show-register-form').click(function(e) {
+        e.preventDefault();
+        $('#login-form').slideUp();
+        $('#signup-form').slideDown();
+    })
+}
 
 //  on page load do this
 $(function() {
     animateArrowIcon();
     addSelectClassToLoginLink();
     addSelectClassToSignUp();
-    onLoginClick();
-    // onSignUpClick();
+    onLogin();
+    onSignUp();
+    slideUp();
+    slideDown();
 })

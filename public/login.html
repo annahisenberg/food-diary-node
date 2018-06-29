@@ -12,6 +12,8 @@
 </head>
 
 <body>
+
+    <!-- navigation -->
     <nav>
         <ul class="nav-container">
             <li>
@@ -19,49 +21,74 @@
             </li>
         </ul>
     </nav>
+    <!-- navigation -->
+
+    <section id="thank-you-msg">
+        <!-- msg goes here -->
+    </section>
+
+
     <main>
+        <!-- Picture to left of login/signup form -->
         <div class="login-picture">
             <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
         </div>
-        <h1>
-            <a class="selected login-link" href="#">Login</a>
-        </h1>
-        <form action="" method="POST" id="login-form">
-            <div class="login-container">
-                <div>
-                    <input type="email" placeholder="Enter email" name="email" class="js-email-field" required>
-                </div>
-                <div>
-                    <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field" required>
-                </div>
-                <div class="button-container">
-                    <button type="submit"> Go
-                            <i class="fas fa-angle-double-right"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+        <!-- Picture to left of login/signup form -->
 
-        <h1>
-            <a class="sign-up" href="#">Sign Up</a>
-        </h1>
-        <form action="" method="POST" id="signup-form">
-            <div class="login-container">
-                <div>
-                    <input type="email" placeholder="Enter email" name="email" class="js-email-field" required>
-                </div>
-                <div>
-                    <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field" required>
-                </div>
-                <div class="button-container">
-                    <button type="submit"> Go
-                                <i class="fas fa-angle-double-right"></i>
-                        </button>
-                </div>
+        <section id="forms">
+            <div class="chooser">
+                <a href="#" class="js-show-login-form">Login</a>
+                <a href="#" class="js-show-register-form">Register</a>
             </div>
-        </form>
+
+            <!-- Login form -->
+            <form action="" method="POST" id="login-form">
+                <div class="login-container">
+                    <div>
+                        <input type="email" placeholder="Enter email" name="email" class="js-email-field2" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field2" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit"> Go
+                            <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- Login form -->
+
+
+            <!-- Sign up form -->
+            <form action="" method="POST" id="signup-form">
+                <div class="login-container">
+                    <div>
+                        <input type="email" placeholder="Enter email" name="email" class="js-email-field" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Re-enter Password" name="psw" minlength="6" class="js-repeat-password-field" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit"> Go
+                            <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- Sign up form -->
+
+        </section>
+
+
     </main>
 
+
+
+    <!-- JS scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="./javascript/login.js"></script>
 </body>

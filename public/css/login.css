@@ -25,13 +25,13 @@ nav ul li {
 
 li a {
     text-decoration: none;
-    color: rgb(169, 56, 66);
+    color: #fff;
     margin: 15px;
     letter-spacing: 3px;
 }
 
 li a:visited {
-    color: #324D5C;
+    color: #fff;
 }
 
 a:hover {
@@ -137,33 +137,48 @@ button:hover {
 
 /* Login/sign up text */
 
-h1 {
-    margin-top: 0;
-    padding: 30px;
+.chooser {
+    text-align: center;
+    margin-top: 10px;
 }
 
-h1 a {
+.chooser a {
     text-decoration: none;
-    color: #e8e7e4;
-    font-weight: lighter;
-    font-size: 20px;
+    color: rgb(182, 180, 180);
 }
 
-span {
-    font-weight: normal;
-    font-size: 19px;
-    color: #FF4858;
+.js-show-register-form {
+    margin-left: 10px;
+}
+
+
+/* Successful sign up message */
+
+#thank-you-msg p {
+    text-align: center;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: gray;
+    font-size: 20px;
 }
 
 
 /* Add this class if login or signup is selected */
 
 .selected {
-    color: #bbbbbb;
-    /* font-weight: bold; */
+    color: #a1a1a1;
     border-bottom: 1px solid cyan;
     font-size: 24px;
 }
+
+#signup-form {
+    display: none;
+}
+
+
+/* #login-form {
+    display: none;
+} */
 
 
 /* media queries */
@@ -180,20 +195,13 @@ span {
     .login-picture h2 {
         font-size: 20px;
     }
-    .nav-container {
-        margin-top: 0px;
-        display: flex;
-        justify-content: center;
-        padding-left: 0px;
-    }
-    .nav-container li {
-        list-style-type: none;
-        margin: 5px;
-    }
     .nav-background {
         background: transparent;
     }
     h2 {
         padding: 20px;
+    }
+    #signup-form {
+        display: none;
     }
 }

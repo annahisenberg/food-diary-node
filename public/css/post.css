@@ -103,7 +103,7 @@ input[type=file] {
 
 input[type=date] {
     border: 1px solid #DDDDDD;
-    margin-bottom:  10px;
+    margin-bottom: 10px;
 }
 
 input[type=number] {
@@ -156,9 +156,9 @@ h1 {
 
 .img-btn {
     /* background: rgb(61, 187, 89); */
-    border: 2px solid rgb(61, 187, 89);
+    border: 2px solid rgb(81, 238, 115);
     outline: none;
-    color: rgb(61, 187, 89);
+    color: rgb(81, 238, 115);
     border-radius: 20px;
     padding: 3px;
     font-size: 11px;
@@ -170,7 +170,7 @@ h1 {
 }
 
 .img-btn:hover {
-    box-shadow: 0 0 0 1px #fdfdfd, 0 0 0 3px #2cb996;
+    box-shadow: 0 0 0 1px #fdfdfd, 0 0 0 3px rgb(81, 238, 115);
 }
 
 
@@ -209,5 +209,8 @@ h1 {
     }
     form {
         border-radius: 10px;
+    }
+    .show-nav {
+        position: static;
     }
 }

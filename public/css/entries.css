@@ -194,12 +194,17 @@ h1 {
     }
     .nav-container li {
         list-style-type: none;
-        margin: 5px;
+        /* margin: 5px; */
+        /* margin-bottom: 16px; */
     }
     .toggle-nav {
         display: none;
     }
     .nav-background {
         background: transparent;
+        /* margin-bottom: 19px; */
+    }
+    .show-nav {
+        position: static;
     }
 }

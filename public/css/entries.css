@@ -189,7 +189,7 @@ h1 {
     .nav-container {
         margin-top: 0px;
         display: flex;
-        justify-content: center;
+        justify-content: flex-end;
         padding-left: 0px;
     }
     .nav-container li {

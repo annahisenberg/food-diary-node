@@ -17,7 +17,7 @@
     <nav>
         <ul class="nav-container">
             <li>
-                <a href="./index.html">Home</a>
+                <a href="./index.html"><i class="fas fa-home"></i></a>
             </li>
         </ul>
     </nav>
@@ -29,18 +29,9 @@
 
 
     <main>
-        <!-- Picture to left of login/signup form -->
-        <div class="login-picture">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-        </div>
-        <!-- Picture to left of login/signup form -->
 
-        <section id="forms">
-            <div class="chooser">
-                <a href="#" class="js-show-login-form">Login</a>
-                <a href="#" class="js-show-register-form">Register</a>
-            </div>
-
+        <section id="login-section">
+            <h2>Login</h2>
             <!-- Login form -->
             <form action="" method="POST" id="login-form">
                 <div class="login-container">
@@ -55,12 +46,17 @@
                             <i class="fas fa-angle-double-right"></i>
                         </button>
                     </div>
+                    <p>Don't have an account yet? Register <a href="#" id="register-link">here.</a></p>
                 </div>
             </form>
-            <!-- Login form -->
+        </section>
+
+        <!-- Login form -->
 
 
-            <!-- Sign up form -->
+        <!-- Sign up form -->
+        <section id="signup-section">
+            <h2>Register</h2>
             <form action="" method="POST" id="signup-form">
                 <div class="login-container">
                     <div>
@@ -77,10 +73,10 @@
                             <i class="fas fa-angle-double-right"></i>
                         </button>
                     </div>
+                    <p>Already have an account? Login <a href="#" id="login-link">here.</a></p>
                 </div>
             </form>
             <!-- Sign up form -->
-
         </section>
 
 

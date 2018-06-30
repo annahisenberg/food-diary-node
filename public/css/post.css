@@ -173,6 +173,18 @@ h1 {
     box-shadow: 0 0 0 1px #fdfdfd, 0 0 0 3px rgb(81, 238, 115);
 }
 
+.post-msg {
+    margin-top: 17px;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: Arial;
+}
+
+.post-msg a {
+    text-decoration: none;
+    color: #757575;
+}
+
 
 /* media queries */
 

@@ -30,6 +30,7 @@ router.route('/posts')
 // Make diary post 
 .post(jwtAuth, (req, res) => {
     const payload = {
+        title: req.body.title,
         breakfast: req.body.breakfast,
         lunch: req.body.lunch,
         dinner: req.body.dinner,

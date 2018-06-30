@@ -23,8 +23,6 @@ function onSignUp() {
                     $('.js-password-field').val('');
                     $('.js-repeat-password-field').val('');
                 }
-                sessionStorage.setItem('token', response.token);
-                // location.href = '/entries.html';
             },
             error: (err) => {
                 // renderError();
@@ -35,7 +33,6 @@ function onSignUp() {
 
 function onLogin() {
     $('#login-form').submit((e) => {
-        console.log("hi");
 
         e.preventDefault();
 
@@ -53,7 +50,7 @@ function onLogin() {
                 console.log(response);
 
                 sessionStorage.setItem('token', response.authToken);
-                location.href = '/entries.html';
+                window.location.href = '/entries-list';
             },
             error: (err) => {
                 // renderError();
@@ -76,43 +73,27 @@ function animateArrowIcon() {
     });
 }
 
-function addSelectClassToSignUp() {
-    $('.js-show-register-form').click(function() {
-        $(this).addClass('selected');
-        $('.js-show-login-form').removeClass('selected');
-    });
-}
-
-function addSelectClassToLoginLink() {
-    $('.js-show-login-form').click(function() {
-        $(this).addClass('selected');
-        $('.js-show-register-form').removeClass('selected');
-    });
-}
-
-function slideDown() {
-    $('.js-show-login-form').click(function(e) {
+function clickRegister() {
+    $('#register-link').click(function(e) {
         e.preventDefault();
-        $('#signup-form').slideUp();
-        $('#login-form').slideDown();
+        $('#login-section').slideUp();
+        $('#signup-section').slideDown();
     })
 }
 
-function slideUp() {
-    $('.js-show-register-form').click(function(e) {
+function clickLogin() {
+    $('#login-link').click(function(e) {
         e.preventDefault();
-        $('#login-form').slideUp();
-        $('#signup-form').slideDown();
+        $('#signup-section').slideUp();
+        $('#login-section').slideDown();
     })
 }
 
 //  on page load do this
 $(function() {
     animateArrowIcon();
-    addSelectClassToLoginLink();
-    addSelectClassToSignUp();
     onLogin();
     onSignUp();
-    slideUp();
-    slideDown();
-})
+    clickLogin();
+    clickRegister();
+});

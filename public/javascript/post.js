@@ -8,7 +8,7 @@ function burgerNav() {
 function addMorePics() {
     $('.img-btn').click(function(e) {
         e.preventDefault();
-        $('.addMorePics').append('<input type="file" name="pic" accept="image/*">');
+        $('.addMorePics').append('<input class="js-img" name="image_input" type="text" placeholder="Enter link to image">');
     });
 }
 
@@ -16,17 +16,20 @@ function ajaxCall() {
     $('form').submit((e) => {
         e.preventDefault();
 
+        const token = sessionStorage.getItem('token');
+
+        if (!token) {
+            window.location.href = '/login-page';
+        }
+
         const title = $('.js-title').val();
         const breakfast = $('.js-breakfast').val();
         const lunch = $('.js-lunch').val();
         const dinner = $('.js-dinner').val();
         const snacks = $('.js-snacks').val();
-        // const img = $('.js-img').val();
+        const img = $('.js-img').val();
         // const date = $('.js-date').val();
-        // const calories = $('.js-calories').val();
-
-        console.log(title, breakfast, lunch, dinner, snacks);
-
+        const calories = $('.js-calories').val();
 
         $.ajax({
             url: '/api/posts',
@@ -36,14 +39,22 @@ function ajaxCall() {
                 breakfast,
                 lunch,
                 dinner,
-                snacks
+                snacks,
+                img
+            },
+            headers: {
+                Authorization: `Bearer ${token}`
             },
             success: (response) => {
                 if (response) {
-                    $('form').append('<p>You just made a post!</p>');
+                    $('form').append('<p class="post-msg">You just made a post! <a href="../entries.html">Click here</a> to see previous posts.</p>');
+                    $('.js-title').val('');
+                    $('.js-breakfast').val('');
+                    $('.js-lunch').val('');
+                    $('.js-dinner').val('');
+                    $('.js-snacks').val('');
+                    $('.js-img').val('');
                 }
-                // sessionStorage.setItem('token', response.token);
-                // location.href = '/entries.html';
             },
             error: (err) => {
                 // renderError();

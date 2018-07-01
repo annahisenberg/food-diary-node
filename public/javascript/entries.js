@@ -2,7 +2,7 @@ function getAndDisplayAllPostsAjaxCall() {
     //get token
     const token = sessionStorage.getItem('token');
     if (!token) {
-        window.location.href = '/login-page';
+        window.location.href = '/login.html';
     }
 
     console.log("TOKEN", token);
@@ -28,13 +28,18 @@ function getAndDisplayAllPostsAjaxCall() {
         },
         error: (err) => {
             sessionStorage.removeItem('token');
-            window.location.href = '/login-page';
+            window.location.href = '/login.html';
         }
     });
 }
 
 
 function clickCardDisplayLightboxPost() {
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+        window.location.href = '/login.html';
+    }
+
     $("main").on('click', '.card', function() {
         const postId = $(this).attr('id');
 
@@ -48,16 +53,20 @@ function clickCardDisplayLightboxPost() {
             success: (response) => {
                 if (response) {
                     $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<p>${response.diaryposts.breakfast}</p><p>${response.diaryposts.lunch}</p><p>${response.diaryposts.dinner}</p><p>${response.diaryposts.snacks}</p>`);
+                    $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><img src="${response.img}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p>`);
 
                     $("a#close-panel").click(function() {
+                        $("#lightbox, #lightbox-panel").fadeOut(300);
+                    });
+
+                    $("#lightbox").click(function() {
                         $("#lightbox, #lightbox-panel").fadeOut(300);
                     });
                 }
             },
             error: (err) => {
                 sessionStorage.removeItem('token');
-                window.location.href = '/login-page';
+                window.location.href = '/login.html';
             }
         });
     });
@@ -68,7 +77,7 @@ function logoutUser() {
     $('#logout a').click(function() {
         console.log("logging out");
         sessionStorage.removeItem('token');
-        window.location.href = '/login-page';
+        window.location.href = '/login.html';
     });
 }
 
@@ -81,72 +90,87 @@ function burgerNav() {
     })
 }
 
+function deletePost() {
+    $('main').on('click', '.fa-trash-alt', function() {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+        }
+
+        const postId = $(this).parent().parent().attr('id');
+
+        $.ajax({
+            url: `/api/posts/${postId}`,
+            method: 'DELETE',
+            dataType: 'json',
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            success: (response) => {
+                if (response) {
+                    $("#lightbox, #lightbox-panel").fadeIn(300);
+                    $('#lightbox-panel').html(`<p align="center"><a id="close-panel" href="#">Close this window</a></p><p>You have successfully deleted your post</p>`);
+
+                    $("a#close-panel").click(function() {
+                        $("#lightbox, #lightbox-panel").fadeOut(300);
+                    });
+
+                    location.reload();
+                }
+            },
+            error: (err) => {
+                sessionStorage.removeItem('token');
+                window.location.href = '/login.html';
+            }
+        });
+    });
+}
+
+function editPost() {
+    $('main').on('click', '.fa-edit', function() {
+        const token = sessionStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login.html';
+        }
+
+        const postId = $(this).parent().parent().attr('id');
+
+        $.ajax({
+            url: `/api/posts/${postId}`,
+            method: 'PUT',
+            dataType: 'json',
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            success: (response) => {
+                if (response) {
+                    $("#lightbox, #lightbox-panel").fadeIn(300);
+                    $('#lightbox-panel').html(`<p align="center"><a id="close-panel" href="#">Close this window</a></p><p>You have successfully updated your post</p>`);
+
+                    $("a#close-panel").click(function() {
+                        $("#lightbox, #lightbox-panel").fadeOut(300);
+                    });
+
+                    $("#lightbox").click(function() {
+                        $("#lightbox, #lightbox-panel").fadeOut(300);
+                    });
+                }
+            },
+            error: (err) => {
+                sessionStorage.removeItem('token');
+                window.location.href = '/login.html';
+            }
+        });
+
+    });
+}
+
 //  on page load do this
 $(function() {
     getAndDisplayAllPostsAjaxCall();
     clickCardDisplayLightboxPost();
     logoutUser();
     burgerNav();
-})
-
-
-
-
-
-// var MOCK_DIARY_ENTRIES = {
-//     "diaryEntries": [{
-//             "id": "1111111",
-//             "title": "Food diary 1",
-//             "Breakfast": "Oatmeal",
-//             "Lunch": "Peanut butter and jelly sandwich",
-//             "Dinner": "Chicken and potatoes",
-//             "Snacks": "Banana and peanut butter",
-//             "publishedAt": 1470016976609,
-//             "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
-//         },
-//         {
-//             "id": "2222222",
-//             "title": "Food diary 2",
-//             "Breakfast": "eggs and bacon",
-//             "Lunch": "Chicken salad sandwich",
-//             "Dinner": "Lasagna",
-//             "Snacks": "Apple",
-//             "publishedAt": 1470016976717,
-//             "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
-//         },
-//         {
-//             "id": "333333",
-//             "title": "Food diary 3",
-//             "Breakfast": "Pancakes",
-//             "Lunch": "Quesadilla",
-//             "Dinner": "Chicken tinga",
-//             "Snacks": "Trail mix",
-//             "publishedAt": 1470016976718,
-//             "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
-//         },
-//         {
-//             "id": "4444444",
-//             "title": "Food diary 4",
-//             "Breakfast": "Grits",
-//             "Lunch": "Salad",
-//             "Dinner": "Chili",
-//             "Snacks": "Potato chips",
-//             "publishedAt": 1470016976719,
-//             "image": "https://images.unsplash.com/photo-1466065478348-0b967011f8e0?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=277e0050a115848d2984fd58c34c3598&auto=format&fit=crop&w=800&q=60"
-//         }
-//     ]
-// };
-
-
-
-// function getAndDisplayDiaryEntries() {
-//     setTimeout(function() {
-//         displayResults(MOCK_DIARY_ENTRIES)
-//     }, 1);
-// }
-
-// function displayResults(data) {
-//     for (index in data.diaryEntries) {
-//         $('main').append(`<div class="card"><a href="#"><i class="far fa-edit"></i></a><p>${data.diaryEntries[index].title}</p><img src="${data.diaryEntries[index].image}"/></div>`);
-//     }
-// }
+    deletePost();
+    editPost();
+});

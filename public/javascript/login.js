@@ -50,7 +50,7 @@ function onLogin() {
                 console.log(response);
 
                 sessionStorage.setItem('token', response.authToken);
-                window.location.href = '/entries-list';
+                window.location.href = '/entries.html';
             },
             error: (err) => {
                 // renderError();

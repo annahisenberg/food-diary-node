@@ -136,6 +136,17 @@ h1 {
     color: #ff007d;
 }
 
+.card a i {
+    margin: 5px;
+}
+
+.fa-times {
+    background: #424141;
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
 
 /* * /Lightbox background */
 
@@ -148,8 +159,10 @@ h1 {
     top: 0px;
     left: 0px;
     min-width: 100%;
-    min-height: 100%;
+    /* min-height: 100%; */
     z-index: 1000;
+    height: 100vh !important;
+    position: fixed;
 }
 
 
@@ -161,11 +174,28 @@ h1 {
     top: 100px;
     left: 50%;
     margin-left: -200px;
-    width: 400px;
+    width: 463px;
     background: #FFFFFF;
     padding: 10px 15px 10px 15px;
-    border: 2px solid #CCCCCC;
     z-index: 1001;
+    border-radius: 6px;
+}
+
+#lightbox-panel p {
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 10px;
+    padding: 10px;
+}
+
+#lightbox-panel img {
+    width: 101%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+span {
+    font-weight: bold;
+    color: rgb(255, 67, 99);
 }
 
 
@@ -189,7 +219,7 @@ h1 {
     .nav-container {
         margin-top: 0px;
         display: flex;
-        justify-content: flex-end;
+        justify-content: center;
         padding-left: 0px;
     }
     .nav-container li {

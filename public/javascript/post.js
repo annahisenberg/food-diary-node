@@ -12,15 +12,17 @@ function addMorePics() {
     });
 }
 
+const token = sessionStorage.getItem('token');
+
+if (!token) {
+    window.location.href = '/login.html';
+}
+
 function ajaxCall() {
     $('form').submit((e) => {
         e.preventDefault();
 
-        const token = sessionStorage.getItem('token');
 
-        if (!token) {
-            window.location.href = '/login-page';
-        }
 
         const title = $('.js-title').val();
         const breakfast = $('.js-breakfast').val();

@@ -15,7 +15,7 @@ function addMorePics() {
 const token = sessionStorage.getItem('token');
 
 if (!token) {
-    window.location.href = '/login.html';
+    // window.location.href = '/login.html';
 }
 
 function ajaxCall() {

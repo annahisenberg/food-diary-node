@@ -6,7 +6,7 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const { JWT_SECRET, JWT_EXPIRY } = require('../config');
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const jwtAuth = passport.authenticate('jwt', { session: false, failureRedirect: '/api/login-page' });
 
 
 // This creates the token that the user needs to access protected routes. Use this for /login route
@@ -126,6 +126,9 @@ const localAuth = passport.authenticate('local', { session: false });
 
 router.post('/login', localAuth, (req, res) => {
     const authToken = createAuthToken(req.user.serialize());
+
+    res.cookie('Token', authToken, { expire: 360000 + Date.now() });
+
     res.json({ authToken });
 });
 

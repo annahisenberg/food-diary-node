@@ -4,7 +4,7 @@ const express = require('express');
 const DiaryPost = require('../models/diarypost-model');
 const router = express.Router();
 const passport = require('passport');
-const jwtAuth = passport.authenticate('jwt', { session: false });
+const jwtAuth = passport.authenticate('jwt', { session: false, failureRedirect: '/api/login-page' });
 
 //Once user's token expires and they need a new one, do this:
 router.post('/refresh', jwtAuth, (req, res) => {

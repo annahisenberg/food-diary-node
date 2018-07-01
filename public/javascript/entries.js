@@ -1,9 +1,6 @@
 function getAndDisplayAllPostsAjaxCall() {
     //get token
     const token = sessionStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/login.html';
-    }
 
     console.log("TOKEN", token);
 
@@ -28,7 +25,6 @@ function getAndDisplayAllPostsAjaxCall() {
         },
         error: (err) => {
             sessionStorage.removeItem('token');
-            window.location.href = '/login.html';
         }
     });
 }
@@ -36,9 +32,6 @@ function getAndDisplayAllPostsAjaxCall() {
 
 function clickCardDisplayLightboxPost() {
     const token = sessionStorage.getItem('token');
-    if (!token) {
-        window.location.href = '/login.html';
-    }
 
     $("main").on('click', '.card', function() {
         const postId = $(this).attr('id');
@@ -66,7 +59,6 @@ function clickCardDisplayLightboxPost() {
             },
             error: (err) => {
                 sessionStorage.removeItem('token');
-                window.location.href = '/login.html';
             }
         });
     });
@@ -75,9 +67,7 @@ function clickCardDisplayLightboxPost() {
 
 function logoutUser() {
     $('#logout a').click(function() {
-        console.log("logging out");
-        sessionStorage.removeItem('token');
-        window.location.href = '/login.html';
+        document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     });
 }
 
@@ -93,9 +83,17 @@ function burgerNav() {
 function deletePost() {
     $('main').on('click', '.fa-trash-alt', function() {
         const token = sessionStorage.getItem('token');
-        if (!token) {
-            window.location.href = '/login.html';
+
+        //Gets token cookie
+        function getCookie(name) {
+
+            var matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ))
+            return matches ? decodeURIComponent(matches[1]) : undefined
         }
+        console.log(getCookie("Token"));
+
 
         const postId = $(this).parent().parent().attr('id');
 
@@ -120,7 +118,6 @@ function deletePost() {
             },
             error: (err) => {
                 sessionStorage.removeItem('token');
-                window.location.href = '/login.html';
             }
         });
     });
@@ -129,9 +126,6 @@ function deletePost() {
 function editPost() {
     $('main').on('click', '.fa-edit', function() {
         const token = sessionStorage.getItem('token');
-        if (!token) {
-            window.location.href = '/login.html';
-        }
 
         const postId = $(this).parent().parent().attr('id');
 
@@ -158,7 +152,6 @@ function editPost() {
             },
             error: (err) => {
                 sessionStorage.removeItem('token');
-                window.location.href = '/login.html';
             }
         });
 

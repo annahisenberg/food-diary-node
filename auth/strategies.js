@@ -40,18 +40,24 @@ const localStrategy = new LocalStrategy((email, password, done) => {
         });
 });
 
-const jwtStrategy = new JwtStrategy({
-        secretOrKey: JWT_SECRET,
-        // Look for the JWT as a Bearer auth header
-        jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('Bearer'),
-        // Only allow HS256 tokens - the same as the ones we issue
-        algorithms: ['HS256']
-    },
-    (payload, done) => {
-        console.log("THE PAYLOAD ", payload);
+let opts = {}
+opts.secretOrKey = JWT_SECRET;
+opts.algorithms = ['HS256'];
 
-        done(null, payload.user);
+opts.jwtFromRequest = function(req) {
+    console.log('THIS IS TOKEN FROM COOKIE ', req.cookies.Token);
+    var token = req.cookies.Token;
+    if (!token) {
+        token = 'Nothing';
     }
-);
+    return token
+};
+// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
+
+const jwtStrategy = new JwtStrategy(opts, (payload, done) => {
+    console.log("THE PAYLOAD ", payload);
+    done(null, payload.user);
+
+});
 
 module.exports = { localStrategy, jwtStrategy };

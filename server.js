@@ -2,7 +2,6 @@
 
 const express = require('express');
 const app = express();
-const path = require('path');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const { DATABASE_URL, PORT } = require('./config');
@@ -12,8 +11,11 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { router: userRouter } = require('./routers/user-router');
+const { router: mainPagesRouter } = require('./routers/main-pages-router');
 const { router: diaryPostRouter } = require('./routers/diarypost-router');
-const { router: authRouter, localStrategy, jwtStrategy } = require('./auth/strategies');
+const { localStrategy, jwtStrategy } = require('./auth/strategies');
+const cookieParser = require('cookie-parser');
+
 
 
 //Middleware
@@ -21,6 +23,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -29,34 +32,13 @@ app.use(function(req, res, next) {
 });
 
 
-console.log(localStrategy);
-
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 // Routes
 app.use('/api', userRouter);
 app.use('/api', diaryPostRouter);
-
-
-const jwtAuth = passport.authenticate('jwt', { session: false });
-
-// @Description: these are the main html pages
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-});
-
-app.get('/make-post', jwtAuth, (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/post.html'));
-});
-
-app.get('/login-page', (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/login.html'));
-});
-
-app.get('/entries-list', jwtAuth, (req, res) => {
-    res.sendFile(path.join(__dirname + '/public/entries.html'));
-});
+app.use('/api', mainPagesRouter);
 
 
 //If user goes to unknown route, then this error message will show

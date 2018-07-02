@@ -15,12 +15,12 @@
         <a class="toggle-nav" href="#">&#9776;</a>
         <ul class="nav-container">
             <li>
-                <a href="./index.html">Home</a>
+                <a href="/api/Home">Home</a>
             </li>
             <li>
-                <a href="./entries.html">Past entries</a>
+                <a href="/api/entries-list">Past entries</a>
             </li>
-            <li>
+            <li id="logout">
                 <a href="#">Logout</a>
             </li>
         </ul>
@@ -60,9 +60,7 @@
             </div>
 
             <div>
-                <label for="Calories">Calories</label>
-                <br>
-                <input class="js-calories" type="number" name="calories_input" min="1" max="3000">
+                <input class="js-notes" type="text" name="notes_input" placeholder="Enter any notes you want to add.">
             </div>
 
             <div>

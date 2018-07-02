@@ -37,7 +37,7 @@ function generateDiaryPostData() {
         lunch: faker.lorem.word(),
         dinner: faker.lorem.word(),
         snacks: faker.lorem.words(),
-        calories: faker.random.number(),
+        notes: faker.lorem.words(),
         img: faker.image.food()
     }
 }
@@ -174,7 +174,7 @@ describe('DiaryPost API', function() {
                 lunch: faker.lorem.word(),
                 dinner: faker.lorem.word(),
                 snacks: faker.lorem.words(),
-                calories: faker.random.number(),
+                notes: faker.lorem.words(),
                 img: faker.image.food()
             }
 

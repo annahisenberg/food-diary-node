@@ -43,21 +43,15 @@ const localStrategy = new LocalStrategy((email, password, done) => {
 let opts = {}
 opts.secretOrKey = JWT_SECRET;
 opts.algorithms = ['HS256'];
-
 opts.jwtFromRequest = function(req) {
-    console.log('THIS IS TOKEN FROM COOKIE ', req.cookies.Token);
-    var token = req.cookies.Token;
-    if (!token) {
-        token = 'Nothing';
-    }
+    //Get the cookie from the browser with the name "Token"
+    const token = req.cookies.Token;
     return token
 };
-// opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
 
 const jwtStrategy = new JwtStrategy(opts, (payload, done) => {
-    console.log("THE PAYLOAD ", payload);
+    // The serialized user email
     done(null, payload.user);
-
 });
 
 module.exports = { localStrategy, jwtStrategy };

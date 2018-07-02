@@ -31,6 +31,13 @@ function onSignUp() {
     });
 }
 
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))
+    return matches ? decodeURIComponent(matches[1]) : undefined
+}
+
 function onLogin() {
     $('#login-form').submit((e) => {
 
@@ -38,6 +45,8 @@ function onLogin() {
 
         const username = $('.js-email-field2').val();
         const password = $('.js-password-field2').val();
+        console.log(username);
+
 
         $.ajax({
             url: '/api/login',
@@ -50,9 +59,11 @@ function onLogin() {
                 console.log(response);
 
                 sessionStorage.setItem('token', response.authToken);
+
                 window.location.href = '/api/entries-list';
             },
             error: (err) => {
+                console.log(err);
                 // renderError();
             }
         });

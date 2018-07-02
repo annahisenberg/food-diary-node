@@ -71,9 +71,6 @@ input {
     resize: none;
     outline: none;
     border-radius: 10px;
-}
-
-textarea {
     width: 80%;
 }
 

@@ -35,7 +35,7 @@ router.route('/posts')
         lunch: req.body.lunch,
         dinner: req.body.dinner,
         snacks: req.body.snacks,
-        calories: req.body.calories,
+        notes: req.body.notes,
         img: req.body.img
     };
     DiaryPost.create(payload)
@@ -80,7 +80,7 @@ router.route('/posts/:id')
             'dinner',
             'snacks',
             'timestamps',
-            'calories',
+            'notes',
             'img'
         ];
         updateableFields.forEach((field) => {

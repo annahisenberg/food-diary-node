@@ -1,9 +1,20 @@
+function closeLightbox() {
+    $("a#close-panel").click(function() {
+        $("#lightbox, #lightbox-panel").fadeOut(300);
+    });
+
+    $("#lightbox").click(function() {
+        $("#lightbox, #lightbox-panel").fadeOut(300);
+    });
+}
+
+function logoutUserOnError() {
+    document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 function getAndDisplayAllPostsAjaxCall() {
-    //get token
-    const token = sessionStorage.getItem('token');
-
-    console.log("TOKEN", token);
-
+    //get token from cookie
+    const token = getCookie('Token');
 
     $.ajax({
         url: '/api/posts',
@@ -13,10 +24,7 @@ function getAndDisplayAllPostsAjaxCall() {
             Authorization: `Bearer ${token}`
         },
         success: (response) => {
-            console.log(response);
-
             if (response) {
-                console.log(response);
 
                 for (index in response) {
                     $('main').append(`<div class="card" id="${response[index]._id}"><a href="#"><i class="far fa-edit"></i></a><a href="#"><i class="far fa-trash-alt"></i></a><p>${response[index].title}</p><img src="${response[index].img}"/></div>`);
@@ -24,14 +32,15 @@ function getAndDisplayAllPostsAjaxCall() {
             }
         },
         error: (err) => {
-            sessionStorage.removeItem('token');
+            logoutUserOnError();
         }
     });
 }
 
 
 function clickCardDisplayLightboxPost() {
-    const token = sessionStorage.getItem('token');
+    //get token from cookie
+    const token = getCookie('Token');
 
     $("main").on('click', '.card', function() {
         const postId = $(this).attr('id');
@@ -48,17 +57,12 @@ function clickCardDisplayLightboxPost() {
                     $("#lightbox, #lightbox-panel").fadeIn(300);
                     $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><img src="${response.img}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p>`);
 
-                    $("a#close-panel").click(function() {
-                        $("#lightbox, #lightbox-panel").fadeOut(300);
-                    });
-
-                    $("#lightbox").click(function() {
-                        $("#lightbox, #lightbox-panel").fadeOut(300);
-                    });
+                    closeLightbox();
                 }
             },
             error: (err) => {
-                sessionStorage.removeItem('token');
+                logoutUserOnError();
+                location.reload();
             }
         });
     });
@@ -68,6 +72,7 @@ function clickCardDisplayLightboxPost() {
 function logoutUser() {
     $('#logout a').click(function() {
         document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        window.location.href = '/api/login-page';
     });
 }
 
@@ -80,21 +85,19 @@ function burgerNav() {
     })
 }
 
+
+//Gets token from cookie
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))
+    return matches ? decodeURIComponent(matches[1]) : undefined
+}
+
+
 function deletePost() {
     $('main').on('click', '.fa-trash-alt', function() {
-        const token = sessionStorage.getItem('token');
-
-        //Gets token cookie
-        function getCookie(name) {
-
-            var matches = document.cookie.match(new RegExp(
-                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-            ))
-            return matches ? decodeURIComponent(matches[1]) : undefined
-        }
-        console.log(getCookie("Token"));
-
-
+        const token = getCookie('Token');
         const postId = $(this).parent().parent().attr('id');
 
         $.ajax({
@@ -117,7 +120,8 @@ function deletePost() {
                 }
             },
             error: (err) => {
-                sessionStorage.removeItem('token');
+                logoutUserOnError();
+                location.reload();
             }
         });
     });
@@ -125,9 +129,17 @@ function deletePost() {
 
 function editPost() {
     $('main').on('click', '.fa-edit', function() {
-        const token = sessionStorage.getItem('token');
-
+        console.log('editing');
+        const token = getCookie('Token');
         const postId = $(this).parent().parent().attr('id');
+
+        // const title = $('.js-title').val();
+        // const breakfast = $('.js-breakfast').val();
+        // const lunch = $('.js-lunch').val();
+        // const dinner = $('.js-dinner').val();
+        // const snacks = $('.js-snacks').val();
+        // const notes = $('.js-notes').val();
+        // const img = $('.js-img').val();
 
         $.ajax({
             url: `/api/posts/${postId}`,
@@ -138,20 +150,18 @@ function editPost() {
             },
             success: (response) => {
                 if (response) {
+                    console.log(response);
+
                     $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<p align="center"><a id="close-panel" href="#">Close this window</a></p><p>You have successfully updated your post</p>`);
-
-                    $("a#close-panel").click(function() {
-                        $("#lightbox, #lightbox-panel").fadeOut(300);
-                    });
-
-                    $("#lightbox").click(function() {
-                        $("#lightbox, #lightbox-panel").fadeOut(300);
-                    });
+                    $('#lightbox-panel').html(`<input class="js-title" id="msg" name="title_input" type="text" value="${title}"><textarea class="js-breakfast" rows="3" cols="60" id="msg" name="breakfast_input">${breakfast}</textarea><textarea class="js-lunch" rows="3" cols="60" id="msg" name="lunch_input">${lunch}</textarea><textarea class="js-dinner" rows="3" cols="60" id="msg" name="dinner_input">${dinner}</textarea><textarea class="js-snacks" rows="3" cols="60" id="msg" name="snacks_input">${snacks}</textarea><input class="js-img" name="image_input" type="text" value="${img}">`);
                 }
+
+                closeLightbox();
+                location.reload();
             },
             error: (err) => {
-                sessionStorage.removeItem('token');
+                logoutUserOnError();
+                location.reload();
             }
         });
 

@@ -1,3 +1,14 @@
+//Gets token from cookie
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+    ))
+    return matches ? decodeURIComponent(matches[1]) : undefined
+}
+
+const token = getCookie('Token');
+
+
 function burgerNav() {
     $('.toggle-nav').click(function() {
         $('nav ul').toggleClass("show-nav");
@@ -12,17 +23,10 @@ function addMorePics() {
     });
 }
 
-const token = sessionStorage.getItem('token');
-
-if (!token) {
-    // window.location.href = '/login.html';
-}
 
 function ajaxCall() {
     $('form').submit((e) => {
         e.preventDefault();
-
-
 
         const title = $('.js-title').val();
         const breakfast = $('.js-breakfast').val();
@@ -30,8 +34,6 @@ function ajaxCall() {
         const dinner = $('.js-dinner').val();
         const snacks = $('.js-snacks').val();
         const img = $('.js-img').val();
-        // const date = $('.js-date').val();
-        const calories = $('.js-calories').val();
 
         $.ajax({
             url: '/api/posts',
@@ -49,7 +51,7 @@ function ajaxCall() {
             },
             success: (response) => {
                 if (response) {
-                    $('form').append('<p class="post-msg">You just made a post! <a href="../entries.html">Click here</a> to see previous posts.</p>');
+                    $('form').append('<p class="post-msg">You just made a post! <a href="/api/entries-list">Click here</a> to see previous posts.</p>');
                     $('.js-title').val('');
                     $('.js-breakfast').val('');
                     $('.js-lunch').val('');
@@ -59,9 +61,16 @@ function ajaxCall() {
                 }
             },
             error: (err) => {
-                // renderError();
+                document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
             }
         });
+    });
+}
+
+function logoutUser() {
+    $('#logout a').click(function() {
+        document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        window.location.href = '/api/login-page';
     });
 }
 
@@ -73,4 +82,5 @@ $(function() {
     burgerNav();
     addMorePics();
     ajaxCall();
+    logoutUser();
 })

@@ -108,15 +108,15 @@ button {
     padding: 9px;
     outline: none;
     transition: all 0.25s;
+    color: #c7266c;
 }
 
 button:hover {
-    padding: 13px;
+    padding: 10px;
 }
 
-button a {
+a {
     text-decoration: none;
-    color: #c7266c;
 }
 
 button a:hover {

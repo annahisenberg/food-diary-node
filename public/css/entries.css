@@ -85,7 +85,7 @@ button {
     margin-right: 5px;
     font-size: 20px;
     position: relative;
-    left: 11px;
+    left: 15px;
 }
 
 button a {
@@ -127,6 +127,7 @@ h1 {
 
 .card img {
     width: 100%;
+    max-height: 325px;
 }
 
 .card p {
@@ -159,7 +160,6 @@ h1 {
     top: 0px;
     left: 0px;
     min-width: 100%;
-    /* min-height: 100%; */
     z-index: 1000;
     height: 100vh !important;
     position: fixed;
@@ -205,12 +205,13 @@ span {
     main {
         display: flex;
         flex-wrap: wrap;
-        margin: -10px;
+        margin-left: 20px;
     }
     .card {
         flex: 1 1 450px;
         margin: 20px;
         transition: all .3s;
+        max-width: 46%;
     }
     .card:hover {
         transform: scale(1.01);
@@ -224,15 +225,12 @@ span {
     }
     .nav-container li {
         list-style-type: none;
-        /* margin: 5px; */
-        /* margin-bottom: 16px; */
     }
     .toggle-nav {
         display: none;
     }
     .nav-background {
         background: transparent;
-        /* margin-bottom: 19px; */
     }
     .show-nav {
         position: static;

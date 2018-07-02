@@ -8,16 +8,6 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET, JWT_EXPIRY } = require('../config');
 const jwtAuth = passport.authenticate('jwt', { session: false, failureRedirect: '/api/login-page' });
 
-
-// This creates the token that the user needs to access protected routes. Use this for /login route
-const createAuthToken = function(user) {
-    return jwt.sign({ user }, JWT_SECRET, {
-        subject: user.email,
-        expiresIn: JWT_EXPIRY,
-        algorithm: 'HS256'
-    });
-};
-
 //Update user
 router.put('/users/:id', jwtAuth, (req, res) => {
     //Make sure there is an id in req.params & req.body and make sure they match
@@ -119,17 +109,28 @@ router.post('/users', (req, res) => {
         });
 });
 
-
+// This creates the token that the user needs to access protected routes. Use this for /login route
+const createAuthToken = function(user) {
+    return jwt.sign({ user }, JWT_SECRET, {
+        subject: user.email,
+        expiresIn: JWT_EXPIRY,
+        algorithm: 'HS256'
+    });
+};
 
 //login user
 const localAuth = passport.authenticate('local', { session: false });
 
 router.post('/login', localAuth, (req, res) => {
     const authToken = createAuthToken(req.user.serialize());
+    console.log(authToken);
 
+    // Setting the cookie 
+    // If the the authentication is correct we need to assign the cookie
     res.cookie('Token', authToken, { expire: 360000 + Date.now() });
-
-    res.json({ authToken });
+    res.send(200).json({
+        ok: true
+    })
 });
 
 module.exports = { router };

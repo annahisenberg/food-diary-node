@@ -14,6 +14,8 @@ body {
 
 /* nav rules  */
 
+
+/* 
 nav {
     width: 100%;
 }
@@ -55,12 +57,64 @@ li a:hover {
     width: 100%;
     margin-bottom: 1px;
     /* color: #fff; */
+
+
+/* }
+
+.toggle-nav {
+    text-decoration: none;
+    display: block;
+    background: orangered;
+} */
+
+
+/* nav styles */
+
+nav .container {
+    margin-top: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    display: none;
+}
+
+nav ul li {
+    text-align: center;
+}
+
+.show-nav {
+    display: block;
+    position: absolute;
+    width: 100%;
+    margin-top: 0;
+    padding-left: 0;
+}
+
+.nav-background {
+    background: orangered;
+    margin-bottom: 1px;
+    color:  white;
 }
 
 .toggle-nav {
     text-decoration: none;
     display: block;
     background: orangered;
+    color: white;
+}
+
+li a {
+    text-decoration: none;
+    color: white;
+    margin: 15px;
+    letter-spacing: 4px;
 }
 
 
@@ -108,7 +162,7 @@ input[type=number] {
 }
 
 .submit_btn {
-    background: rgb(81, 238, 115);
+    background: rgb(68, 197, 96);
     outline: none;
     color: white;
     border-radius: 20px;
@@ -191,16 +245,19 @@ h1 {
         display: flex;
         justify-content: center;
         padding-left: 0px;
+        background:  white;
+        /* color: orangered; */
     }
     .nav-container li {
         list-style-type: none;
         margin: 5px;
+        /* color: orangered; */
     }
     li a {
         color: white;
     }
     li a:visited {
-        color: white;
+        color: orangered;
     }
     .toggle-nav {
         display: none;

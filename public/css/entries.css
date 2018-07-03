@@ -70,7 +70,7 @@ html {
 
 /* add new post green button  */
 
-button {
+.add-post-btn {
     background: rgb(81, 238, 115);
     color: white;
     border-radius: 50%;
@@ -88,16 +88,7 @@ button {
     left: 15px;
 }
 
-button a {
-    text-decoration: none;
-    color: white;
-}
-
-button a:visited {
-    color: white;
-}
-
-button:hover {
+.add-post-btn:hover {
     transform: translatey(2px);
     background: #129712;
 }
@@ -134,7 +125,11 @@ h1 {
     text-align: center;
     font-family: Arial;
     margin-bottom: 5px;
-    color: #ff007d;
+    color: #cc0064;
+    font-size: 22px;
+    text-transform:  uppercase;
+    margin-bottom: 12px;
+    font-weight:  bold;
 }
 
 .card a i {
@@ -171,7 +166,7 @@ h1 {
 #lightbox-panel {
     display: none;
     position: fixed;
-    top: 100px;
+    top: 74px;
     left: 50%;
     margin-left: -200px;
     width: 463px;
@@ -179,6 +174,7 @@ h1 {
     padding: 10px 15px 10px 15px;
     z-index: 1001;
     border-radius: 6px;
+    /* margin-bottom:  50px; */
 }
 
 #lightbox-panel p {
@@ -196,6 +192,17 @@ h1 {
 span {
     font-weight: bold;
     color: rgb(255, 67, 99);
+}
+
+.edit-btn {
+    background: #424141;
+    color: white;
+    padding: 4px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
 }
 
 

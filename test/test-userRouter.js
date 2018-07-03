@@ -70,7 +70,7 @@ describe('User api routes', function() {
                 .get('/api/users')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
-                .set('Authorization', `Bearer ${token}`)
+                .set('Cookie', `Token=${token}`)
                 .then(res => {
                     res.should.have.status(200);
                     res.should.be.json;

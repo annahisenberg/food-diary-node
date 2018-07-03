@@ -10,7 +10,7 @@ const path = require('path');
 router.get('/home', (req, res) => {
     res.sendFile(path.resolve('./public/' + 'index.html'));
 });
-// 
+
 router.get('/make-post/', jwtAuth, (req, res) => {
     res.sendFile(path.resolve('./public/' + 'post.html'));
 });
@@ -20,10 +20,8 @@ router.get('/login-page', (req, res) => {
 });
 
 
-
 router.get('/entries-list', jwtAuth, (req, res) => {
     res.sendFile(path.resolve('./public/' + 'entries.html'));
-
 });
 
 module.exports = { router };

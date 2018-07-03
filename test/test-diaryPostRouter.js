@@ -131,7 +131,7 @@ describe('DiaryPost API', function() {
                 .get('/api/posts')
                 .set('Content-Type', 'application/json')
                 .set('Accept', 'application/json')
-                .set('Authorization', `Bearer ${token}`)
+                .set('Cookie', `Token=${token}`)
                 .then(function(_res) {
                     res = _res;
                     res.should.have.status(200);
@@ -152,7 +152,7 @@ describe('DiaryPost API', function() {
 
             return chai.request(app)
                 .post('/api/posts')
-                .set('Authorization', `Bearer ${token}`)
+                .set('Cookie', `Token=${token}`)
                 .send(newPost)
                 .then(function(res) {
                     expect(res).to.have.status(201);
@@ -189,7 +189,7 @@ describe('DiaryPost API', function() {
                         .put(`/api/posts/${entry._id}`)
                         .set('Content-Type', 'application/json')
                         .set('Accept', 'application/json')
-                        .set('Authorization', `Bearer ${token}`)
+                        .set('Cookie', `Token=${token}`)
                         .send(updateData);
                 })
                 .then(function(res) {
@@ -202,7 +202,7 @@ describe('DiaryPost API', function() {
                     post.lunch.should.deep.equal(updateData.lunch);
                     post.dinner.should.deep.equal(updateData.dinner);
                     post.snacks.should.deep.equal(updateData.snacks);
-                    post.calories.should.deep.equal(updateData.calories);
+                    post.notes.should.deep.equal(updateData.notes);
                     post.img.should.deep.equal(updateData.img);
                 })
         });
@@ -221,7 +221,7 @@ describe('DiaryPost API', function() {
                     deletedPost = _post;
                     return chai.request(app)
                         .delete(`/api/posts/${deletedPost._id}`)
-                        .set('Authorization', `Bearer ${token}`)
+                        .set('Cookie', `Token=${token}`)
                 })
                 .then(res => {
                     res.should.have.status(200);

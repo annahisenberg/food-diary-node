@@ -133,15 +133,15 @@ button:hover {
 
 #signup-section {
     display: none;
-    max-width: 400px;
+    max-width: 307px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    min-width: 400px;
+    /* min-width: 400px; */
     /* min-height: 00px; */
 }
 
 #login-section {
-    max-width: 400px;
-    min-width: 400px;
+    max-width: 307px;
+    /* min-width: 400px; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -175,5 +175,13 @@ div p a:hover {
     }
     h2 {
         padding: 20px;
+    }
+    #login-section {
+        max-width: 400px;
+        min-width: 400px;
+    }
+    #signup-section {
+        max-width: 400px;
+        min-width: 400px;
     }
 }

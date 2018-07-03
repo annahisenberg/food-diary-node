@@ -46,6 +46,7 @@ opts.algorithms = ['HS256'];
 opts.jwtFromRequest = function(req) {
     //Get the cookie from the browser with the name "Token"
     const token = req.cookies.Token;
+
     return token
 };
 

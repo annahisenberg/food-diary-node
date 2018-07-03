@@ -27,7 +27,7 @@ function getAndDisplayAllPostsAjaxCall() {
             if (response) {
 
                 for (index in response) {
-                    $('main').append(`<div class="card" id="${response[index]._id}"><a href="#"><i class="far fa-edit"></i></a><a href="#"><i class="far fa-trash-alt"></i></a><p>${response[index].title}</p><img src="${response[index].img}"/></div>`);
+                    $('main').append(`<div class="card" id="${response[index]._id}"><a href="#"></a><a href="#"><i class="far fa-trash-alt"></i></a><button class="edit-btn">Edit Post</button><p>${response[index].title}</p><img src="${response[index].img}" alt="food-picture"/></div>`);
                 }
             }
         },
@@ -55,7 +55,7 @@ function clickCardDisplayLightboxPost() {
             success: (response) => {
                 if (response) {
                     $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><img src="${response.img}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p>`);
+                    $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><div id="post-info"><img src="${response.img}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p><p><span>Notes: </span>${response.notes}</p></div>`);
 
                     closeLightbox();
                 }
@@ -116,7 +116,7 @@ function deletePost() {
                         $("#lightbox, #lightbox-panel").fadeOut(300);
                     });
 
-                    location.reload();
+                    // location.reload();
                 }
             },
             error: (err) => {
@@ -128,22 +128,15 @@ function deletePost() {
 }
 
 function editPost() {
-    $('main').on('click', '.fa-edit', function() {
-        console.log('editing');
+    $('main').on('click', '.edit-btn', function(e) {
+        e.stopPropagation();
         const token = getCookie('Token');
-        const postId = $(this).parent().parent().attr('id');
+        const postId = $(this).parent().attr('id');
 
-        // const title = $('.js-title').val();
-        // const breakfast = $('.js-breakfast').val();
-        // const lunch = $('.js-lunch').val();
-        // const dinner = $('.js-dinner').val();
-        // const snacks = $('.js-snacks').val();
-        // const notes = $('.js-notes').val();
-        // const img = $('.js-img').val();
-
+        //Make ajax call to display post by ID
         $.ajax({
             url: `/api/posts/${postId}`,
-            method: 'PUT',
+            method: 'GET',
             dataType: 'json',
             headers: {
                 Authorization: `Bearer ${token}`
@@ -153,18 +146,16 @@ function editPost() {
                     console.log(response);
 
                     $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<input class="js-title" id="msg" name="title_input" type="text" value="${title}"><textarea class="js-breakfast" rows="3" cols="60" id="msg" name="breakfast_input">${breakfast}</textarea><textarea class="js-lunch" rows="3" cols="60" id="msg" name="lunch_input">${lunch}</textarea><textarea class="js-dinner" rows="3" cols="60" id="msg" name="dinner_input">${dinner}</textarea><textarea class="js-snacks" rows="3" cols="60" id="msg" name="snacks_input">${snacks}</textarea><input class="js-img" name="image_input" type="text" value="${img}">`);
-                }
+                    $('#lightbox-panel').html(`<input class="js-img" name="image_input" type="text" placeholder="Enter link to image" value="${response.img}"><textarea class="js-breakfast" rows="3" cols="60" id="msg" name="breakfast_input">${response.breakfast}</textarea><textarea class="js-lunch" rows="3" cols="60" id="msg" name="lunch_input">${response.lunch}</textarea>`);
 
-                closeLightbox();
-                location.reload();
+                    // closeLightbox();
+                }
             },
             error: (err) => {
-                logoutUserOnError();
-                location.reload();
+                // logoutUserOnError();
+                // location.reload();
             }
         });
-
     });
 }
 

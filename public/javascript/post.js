@@ -34,6 +34,7 @@ function ajaxCall() {
         const dinner = $('.js-dinner').val();
         const snacks = $('.js-snacks').val();
         const img = $('.js-img').val();
+        const notes = $('.js-notes').val();
 
         $.ajax({
             url: '/api/posts',
@@ -58,6 +59,7 @@ function ajaxCall() {
                     $('.js-dinner').val('');
                     $('.js-snacks').val('');
                     $('.js-img').val('');
+                    $('.js-notes').val('');
                 }
             },
             error: (err) => {

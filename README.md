@@ -4,6 +4,8 @@
 
 # Screenshots
 
+![1.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-04%20at%208.54.02%20PM.png)
+
 # Summary 
 You can keep track of everything you eat with The Foodie Diaries app. Simply sign up or login with the demo account.
 Then you can go to the "posts" page and see all previous posts made. If you'd like to create a new post, click on the 

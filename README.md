@@ -1,6 +1,6 @@
 # The Foodie Diaries
 
-[link to live app](http://google.com)
+[link to live app](https://immense-ridge-55909.herokuapp.com/api/Home)
 
 # Screenshots
 

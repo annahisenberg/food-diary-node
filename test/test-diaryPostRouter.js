@@ -170,6 +170,7 @@ describe('DiaryPost API', function() {
     describe('diarypost PUT request', function() {
         it('should update fields sent', function() {
             const updateData = {
+                title: faker.lorem.words(),
                 breakfast: faker.lorem.word(),
                 lunch: faker.lorem.word(),
                 dinner: faker.lorem.word(),
@@ -184,9 +185,9 @@ describe('DiaryPost API', function() {
             return DiaryPost
                 .findOne()
                 .then(entry => {
-                    updateData._id = entry._id;
+                    updateData.id = entry.id;
                     return chai.request(app)
-                        .put(`/api/posts/${entry._id}`)
+                        .put(`/api/posts/${entry.id}`)
                         .set('Content-Type', 'application/json')
                         .set('Accept', 'application/json')
                         .set('Cookie', `Token=${token}`)
@@ -195,9 +196,10 @@ describe('DiaryPost API', function() {
                 .then(function(res) {
                     expect(res).to.have.status(200);
 
-                    return DiaryPost.findById(updateData._id);
+                    return DiaryPost.findById(updateData.id);
                 })
                 .then(post => {
+                    post.title.should.deep.equal(updateData.title);
                     post.breakfast.should.deep.equal(updateData.breakfast);
                     post.lunch.should.deep.equal(updateData.lunch);
                     post.dinner.should.deep.equal(updateData.dinner);

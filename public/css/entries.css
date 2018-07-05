@@ -136,13 +136,6 @@ h1 {
     margin: 5px;
 }
 
-.fa-times {
-    background: #424141;
-    color: white;
-    padding: 5px;
-    margin-bottom: 5px;
-}
-
 
 /* * /Lightbox background */
 
@@ -168,13 +161,14 @@ h1 {
     position: fixed;
     top: 47px;
     left: 50%;
-    margin-left: -200px;
-    width: 463px;
     background: #FFFFFF;
     padding: 10px 15px 10px 15px;
     z-index: 1001;
     border-radius: 6px;
-    /* margin-bottom:  50px; */
+    width: 80%;
+    margin-left: -149px;
+    overflow: scroll;
+    max-height: 554px;
 }
 
 #lightbox-panel p {
@@ -189,20 +183,57 @@ h1 {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#post-info h2 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 27px;
+    color: rgb(255, 67, 99);
+}
+
+
+/* "x" icon */
+
+.fa-times {
+    background: #424141;
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #424141;
+    transition: all 0.3s;
+}
+
+.fa-times:hover {
+    background: white;
+    color: #424141;
+}
+
+
+/* labels */
+
 span {
     font-weight: bold;
     color: rgb(255, 67, 99);
+    text-transform: uppercase;
 }
+
+
+/* edit button */
 
 .edit-btn {
     background: #424141;
     color: white;
-    padding: 4px;
+    padding: 3px;
     margin-bottom: 5px;
     margin-left: 5px;
     cursor: pointer;
-    border: none;
-    border-radius: 10px;
+    border: 1px solid #424141;
+    border-radius: 3px;
+    transition: all 0.3s;
+}
+
+.edit-btn:hover {
+    background: white;
+    color: #424141;
 }
 
 textarea,
@@ -224,13 +255,6 @@ label {
     background: green;
     color: white;
     border-radius: 20px;
-}
-
-#lightbox-panel {
-    width: 80%;
-    margin-left: -149px;
-    overflow: scroll;
-    max-height: 554px;
 }
 
 
@@ -283,3 +307,5 @@ label {
         border-radius: 6px;
     }
 }
+
+@media

@@ -58,7 +58,7 @@ function clickCardDisplayLightboxPost() {
                 $("#lightbox, #lightbox-panel").fadeIn(300);
 
 
-                $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><div id="post-info"><img src="${response.img ? response.img : defaultImg}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p><p><span>Notes: </span>${response.notes ? response.notes : ''}</p></div>`);
+                $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><div id="post-info"><h2>${response.title}</h2><img src="${response.img ? response.img : defaultImg}" alt=""><p><span>Breakfast:</span> ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p><p><span>Notes: </span>${response.notes ? response.notes : ''}</p></div>`);
 
                 closeLightbox();
             },

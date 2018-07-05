@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/login.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <!-- navigation -->
+    <nav role="navigation">
+        <ul class="nav-container">
+            <li>
+                <a href="/api/home"><i class="fas fa-home"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!-- navigation -->
+
+    <section id="thank-you-msg" aria-live="polite" role="contentinfo">
+        <!-- msg goes here -->
+    </section>
+
+
+    <main role="main">
+
+        <section id="login-section" role="contentinfo">
+            <div class="login-header">
+                <h2>Login</h2>
+            </div>
+            <!-- Login form -->
+            <form action="" method="POST" id="login-form" role="form">
+                <div class="login-container">
+                    <div>
+                        <input type="email" placeholder="Enter email" name="email" class="js-email-field2" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field2" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit"> Go
+                            <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                    <p>Don't have an account yet? Register <a href="#" id="register-link">here.</a></p>
+                </div>
+            </form>
+        </section>
+
+        <!-- Login form -->
+
+
+        <!-- Sign up form -->
+        <section id="signup-section" role="contentinfo">
+            <h2>Register</h2>
+            <form action="" method="POST" id="signup-form" role="form">
+                <div class="login-container">
+                    <div>
+                        <input type="email" placeholder="Enter email" name="email" class="js-email-field" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Enter Password" name="psw" minlength="6" class="js-password-field" required>
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Re-enter Password" name="psw" minlength="6" class="js-repeat-password-field" required>
+                    </div>
+                    <div class="button-container">
+                        <button type="submit"> Go
+                            <i class="fas fa-angle-double-right"></i>
+                        </button>
+                    </div>
+                    <p>Already have an account? Login <a href="#" id="login-link">here.</a></p>
+                </div>
+            </form>
+            <!-- Sign up form -->
+        </section>
+
+
+    </main>
+
+
+
+    <!-- JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="/javascript/login.js"></script>
+</body>
+
+</html>

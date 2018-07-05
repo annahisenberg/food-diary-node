@@ -1,17 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/entries.css" />
+    <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
 
 <body>
-    <h1>Hello world, from entries</h1>
+    <nav role="navigation">
+        <a class="toggle-nav" href="#">&#9776;</a>
+        <ul class="nav-container">
+            <li>
+                <a href="/api/Home">Home</a>
+            </li>
+            <li id="logout">
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <header role="heading">
+        <h1>Posts</h1>
+        <div>
+            <a href="/api/make-post"><button class="add-post-btn"><i class="fas fa-plus"></i></button></a>
+        </div>
+    </header>
+
+
+    <main aria-live="polite" role="main">
+        <!-- lightbox-panel -->
+        <div id="lightbox-panel" aria-live="polite">
+            <p align="center"></p><a id="close-panel" href="#"><i class="fas fa-times"></i></a></p>
+        </div>
+
+        <!-- lightbox -->
+        <div id="lightbox">
+        </div>
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="/javascript/entries.js"></script>
 </body>
 
 </html>

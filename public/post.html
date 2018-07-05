@@ -1,17 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/post.css" />
+    <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
 </head>
 
 <body>
-    <h1>Hello world, from post</h1>
+    <nav role="navigation">
+        <a class="toggle-nav" href="#">&#9776;</a>
+        <ul class="nav-container">
+            <li>
+                <a href="/api/Home">Home</a>
+            </li>
+            <li>
+                <a href="/api/entries-list">Past entries</a>
+            </li>
+            <li id="logout">
+                <a href="#">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <main role="main">
+
+        <form action="" method="post" role="form">
+            <h1>Start your food diary now!</h1>
+
+            <div>
+                <label for="title">Title: </label>
+                <input class="js-title" name="title_input" type="text" id="title" placeholder="Post title">
+            </div>
+
+            <div>
+                <label for="breakfast">Breakfast: </label>
+                <textarea class="js-breakfast" rows="3" cols="60" name="breakfast_input" id="breakfast" placeholder="What did you have for breakfast?"></textarea>
+            </div>
+
+            <div>
+                <label for="lunch">Lunch: </label>
+                <textarea class="js-lunch" rows="3" cols="60" name="lunch_input" id="lunch" placeholder="What did you have for lunch?"></textarea>
+            </div>
+
+            <div>
+                <label for="dinner">Dinner: </label>
+                <textarea class="js-dinner" rows="3" cols="60" name="dinner_input" id="dinner" placeholder="What did you have for dinner?"></textarea>
+            </div>
+
+            <div>
+                <label for="snacks">Snacks: </label>
+                <textarea class="js-snacks" rows="3" cols="60" name="snacks_input" id="snacks" placeholder="What did you have for snacks?"></textarea>
+            </div>
+
+            <div>
+                <label for="img">Image address: </label>
+                <input class="js-img" name="image_input" type="text" id="img" placeholder="Enter image address">
+            </div>
+
+            <div>
+                <label for="notes">Notes: </label>
+                <input class="js-notes" type="text" name="notes_input" id="notes" placeholder="Enter any notes you want to add.">
+            </div>
+
+            <div>
+                <button class="submit_btn" type="submit">Submit</button>
+            </div>
+        </form>
+
+
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="/javascript/post.js"></script>
 </body>
 
 </html>

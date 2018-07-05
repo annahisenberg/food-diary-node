@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+/* body/html styles */
+
+body,
+html {
+    height: 100%;
+    background-image: url("https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=304a04115ffd171fdcc04a834afff74c&auto=format&fit=crop&w=1500&q=80");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+}
+
+
+/* main styles */
+
+h1 {
+    color: #c7266c;
+    /* font-size: 45px; */
+    letter-spacing: 4px;
+    font-family: 'Niconne', cursive;
+    font-size: 67px;
+    text-shadow: 2px 2px #ff7d7d;
+}
+
+.h1-btn-container {
+    position: relative;
+    bottom: 70px;
+}
+
+main {
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    margin-top: -50px;
+    margin-left: -50px;
+    height: 100px;
+}
+
+
+/* get started button rules */
+
+#start-btn {
+    cursor: pointer;
+    width: 50%;
+    border: 1px solid #c7266c;
+    border-radius: 25px;
+    background: transparent;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    font-size: 10px;
+    padding: 9px;
+    outline: none;
+    transition: all 0.25s;
+    color: #c7266c;
+}
+
+#start-btn:hover {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#start-btn a:hover {
+    color: #c7266c;
+}
+
+.fa-angle-double-right {
+    position: relative;
+}
+
+#logout-btn {
+    display: none;
+    cursor: pointer;
+    background: #c7266c;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 25px;
+    padding: 9px;
+    transition: all 0.3s;
+}
+
+#logout-btn:hover {
+    background: #a32059;
+}

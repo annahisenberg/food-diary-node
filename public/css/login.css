@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 22px;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    background: rgb(255, 72, 88);
+    background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
+}
+
+
+/* nav rules  */
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    text-align: center;
+}
+
+li a {
+    text-decoration: none;
+    color: #fff;
+    margin: 15px;
+    letter-spacing: 3px;
+}
+
+li a:visited {
+    color: #fff;
+}
+
+a:hover {
+    color: rgb(232, 0, 21);
+}
+
+
+/* main rules  */
+
+main {
+    position: fixed;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: white; */
+    border-radius: 3px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    height: 50%;
+}
+
+
+/* input styles */
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #FF4858;
+    margin: 15px;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid #FF4858;
+}
+
+input::placeholder {
+    color: lightgray;
+    font-size: 16;
+}
+
+input::placeholder {
+    font-size: 15px;
+}
+
+
+/* form styles */
+
+form {
+    background: white;
+    padding-bottom: 20px;
+    padding: 20px;
+}
+
+
+/* Go button rules */
+
+button {
+    cursor: pointer;
+    width: 50%;
+    margin-top: 25px;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    background: rgb(255, 72, 88);
+    background: linear-gradient(90deg, rgba(255, 72, 88, 1) 0%, rgba(238, 251, 108, 1) 100%);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-left: 20px;
+    transition: all 2s;
+}
+
+button:hover {
+    background: rgba(238, 251, 108, 1);
+    background: linear-gradient(90deg, rgba(238, 251, 108, 1) 0%, rgba(255, 72, 88, 1) 100%);
+}
+
+.fa-angle-double-right {
+    position: relative;
+}
+
+
+/* Successful sign up message */
+
+#thank-you-msg p {
+    text-align: center;
+    background: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    color: gray;
+    font-size: 20px;
+}
+
+
+/* Add this class if login or signup is selected */
+
+.selected {
+    color: #a1a1a1;
+    border-bottom: 1px solid cyan;
+    font-size: 24px;
+}
+
+#signup-section {
+    display: none;
+    max-width: 307px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* min-width: 400px; */
+    /* min-height: 00px; */
+}
+
+#login-section {
+    max-width: 307px;
+    /* min-width: 400px; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+section h2 {
+    color: white;
+    font-weight: normal;
+}
+
+div p {
+    color: black;
+    font-size: 17px;
+}
+
+div p a {
+    text-decoration: none;
+    color: rgb(183, 37, 49);
+    /* font-weight: lighter; */
+    font-size: 17px;
+}
+
+div p a:hover {
+    color: rgb(234, 72, 85);
+}
+
+
+/* media queries */
+
+@media only screen and (min-width: 768px) {
+    .nav-background {
+        background: transparent;
+    }
+    h2 {
+        padding: 20px;
+    }
+    #login-section {
+        max-width: 400px;
+        min-width: 400px;
+    }
+    #signup-section {
+        max-width: 400px;
+        min-width: 400px;
+    }
+}

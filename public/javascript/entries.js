@@ -1,3 +1,5 @@
+const defaultImg = 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c9443baefd581d4e532b6d4f1e7879be&auto=format&fit=crop&w=800&q=60';
+
 function closeLightbox() {
     $("a#close-panel").click(function() {
         $("#lightbox, #lightbox-panel").fadeOut(300);
@@ -27,7 +29,7 @@ function getAndDisplayAllPostsAjaxCall() {
             if (response) {
 
                 for (index in response) {
-                    $('main').append(`<div class="card" id="${response[index]._id}"><a href="#"></a><a href="#"><i class="far fa-trash-alt"></i></a><button class="edit-btn">Edit Post</button><p>${response[index].title}</p><img src="${response[index].img}" alt="food-picture"/></div>`);
+                    $('main').append(`<div class="card" id="${response[index]._id}"><a href="#"></a><a href="#"><i class="far fa-trash-alt"></i></a><button class="edit-btn">Edit Post</button><p>${response[index].title}</p><img src="${response[index].img ? response[index].img : defaultImg}" alt="food-picture"/></div>`);
                 }
             }
         },
@@ -53,12 +55,12 @@ function clickCardDisplayLightboxPost() {
                 Authorization: `Bearer ${token}`
             },
             success: (response) => {
-                if (response) {
-                    $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><div id="post-info"><img src="${response.img}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p><p><span>Notes: </span>${response.notes}</p></div>`);
+                $("#lightbox, #lightbox-panel").fadeIn(300);
 
-                    closeLightbox();
-                }
+
+                $('#lightbox-panel').html(`<a id="close-panel" href="#"><i class="fas fa-times"></i></a><div id="post-info"><img src="${response.img ? response.img : defaultImg}" alt=""><p><span>Breakfast</span>: ${response.breakfast}</p><p><span>Lunch:</span> ${response.lunch}</p><p><span>Dinner:</span> ${response.dinner}</p><p><span>Snacks:</span> ${response.snacks}</p><p><span>Notes: </span>${response.notes ? response.notes : ''}</p></div>`);
+
+                closeLightbox();
             },
             error: (err) => {
                 logoutUserOnError();
@@ -116,7 +118,7 @@ function deletePost() {
                         $("#lightbox, #lightbox-panel").fadeOut(300);
                     });
 
-                    // location.reload();
+                    location.reload();
                 }
             },
             error: (err) => {
@@ -127,13 +129,13 @@ function deletePost() {
     });
 }
 
-function editPost() {
+function clickEditPostBtn() {
     $('main').on('click', '.edit-btn', function(e) {
         e.stopPropagation();
         const token = getCookie('Token');
         const postId = $(this).parent().attr('id');
 
-        //Make ajax call to display post by ID
+        //Make ajax call to display post by ID with inputs that user can edit
         $.ajax({
             url: `/api/posts/${postId}`,
             method: 'GET',
@@ -143,12 +145,60 @@ function editPost() {
             },
             success: (response) => {
                 if (response) {
+                    $("#lightbox, #lightbox-panel").fadeIn(300);
+                    $('#lightbox-panel').html(`<div id="${postId}"><a id="close-panel" href="#"><i class="fas fa-times"></i></a><br><label>Title: <input class="js-title" name="title_input" type="text" value="${response.title}"></label><br><label>Image: <input class="js-img" name="image_input" type="text" value="${response.img}"></label><br><label>Breakfast: <textarea class="js-breakfast" rows="3" cols="40" id="msg" name="breakfast_input">${response.breakfast}</textarea></label><br><label>Lunch: <textarea class="js-lunch" rows="3" cols="40" id="msg" name="lunch_input">${response.lunch}</textarea></label><br><label>Dinner: <textarea class="js-dinner" rows="3" cols="40" name="dinner_input">${response.dinner}</textarea></label><br><label>Snacks: <textarea class="js-snacks" rows="3" cols="40" name="snacks_input">${response.snacks}</textarea></label><br><label>Notes: <input class="js-notes" type="text" name="notes_input" value="${response.notes}"></label><button class="submit_btn" type="submit">Submit</button></div>`);
+
+                    closeLightbox();
+                }
+            },
+            error: (err) => {
+                logoutUserOnError();
+                location.reload();
+            }
+        });
+    });
+}
+
+function clickSubmitBtnForEditedPost() {
+    $('main').on('click', '.submit_btn', function(e) {
+        e.preventDefault();
+
+        const token = getCookie('Token');
+        const postId = $(this).parent().attr('id');
+
+
+        const title = $('.js-title').val();
+        const breakfast = $('.js-breakfast').val();
+        const lunch = $('.js-lunch').val();
+        const dinner = $('.js-dinner').val();
+        const snacks = $('.js-snacks').val();
+        const img = $('.js-img').val();
+        const notes = $('.js-notes').val();
+
+        $.ajax({
+            url: `/api/posts/${postId}`,
+            method: 'PUT',
+            data: {
+                id: postId,
+                title,
+                breakfast,
+                lunch,
+                dinner,
+                snacks,
+                img,
+                notes
+            },
+            dataType: 'json',
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            success: (response) => {
+                if (response) {
                     console.log(response);
 
-                    $("#lightbox, #lightbox-panel").fadeIn(300);
-                    $('#lightbox-panel').html(`<input class="js-img" name="image_input" type="text" placeholder="Enter link to image" value="${response.img}"><textarea class="js-breakfast" rows="3" cols="60" id="msg" name="breakfast_input">${response.breakfast}</textarea><textarea class="js-lunch" rows="3" cols="60" id="msg" name="lunch_input">${response.lunch}</textarea>`);
+                    $('#lightbox-panel').html(`<p>Your post was successfully updated.</p>`);
 
-                    // closeLightbox();
+                    closeLightbox();
                 }
             },
             error: (err) => {
@@ -159,6 +209,8 @@ function editPost() {
     });
 }
 
+
+
 //  on page load do this
 $(function() {
     getAndDisplayAllPostsAjaxCall();
@@ -166,5 +218,6 @@ $(function() {
     logoutUser();
     burgerNav();
     deletePost();
-    editPost();
+    clickEditPostBtn();
+    clickSubmitBtnForEditedPost();
 });

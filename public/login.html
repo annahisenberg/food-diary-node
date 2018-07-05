@@ -14,7 +14,7 @@
 <body>
 
     <!-- navigation -->
-    <nav>
+    <nav role="navigation">
         <ul class="nav-container">
             <li>
                 <a href="/api/home"><i class="fas fa-home"></i></a>
@@ -23,19 +23,19 @@
     </nav>
     <!-- navigation -->
 
-    <section id="thank-you-msg">
+    <section id="thank-you-msg" aria-live="polite" role="contentinfo">
         <!-- msg goes here -->
     </section>
 
 
-    <main>
+    <main role="main">
 
-        <section id="login-section">
+        <section id="login-section" role="contentinfo">
             <div class="login-header">
                 <h2>Login</h2>
             </div>
             <!-- Login form -->
-            <form action="" method="POST" id="login-form">
+            <form action="" method="POST" id="login-form" role="form">
                 <div class="login-container">
                     <div>
                         <input type="email" placeholder="Enter email" name="email" class="js-email-field2" required>
@@ -57,9 +57,9 @@
 
 
         <!-- Sign up form -->
-        <section id="signup-section">
+        <section id="signup-section" role="contentinfo">
             <h2>Register</h2>
-            <form action="" method="POST" id="signup-form">
+            <form action="" method="POST" id="signup-form" role="form">
                 <div class="login-container">
                     <div>
                         <input type="email" placeholder="Enter email" name="email" class="js-email-field" required>

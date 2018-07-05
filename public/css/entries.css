@@ -127,9 +127,9 @@ h1 {
     margin-bottom: 5px;
     color: #cc0064;
     font-size: 22px;
-    text-transform:  uppercase;
+    text-transform: uppercase;
     margin-bottom: 12px;
-    font-weight:  bold;
+    font-weight: bold;
 }
 
 .card a i {
@@ -148,7 +148,7 @@ h1 {
 
 #lightbox {
     display: none;
-    background: #000000;
+    background: #000000d1;
     opacity: 0.9;
     filter: alpha(opacity=90);
     position: absolute;
@@ -166,7 +166,7 @@ h1 {
 #lightbox-panel {
     display: none;
     position: fixed;
-    top: 74px;
+    top: 47px;
     left: 50%;
     margin-left: -200px;
     width: 463px;
@@ -205,6 +205,34 @@ span {
     border-radius: 10px;
 }
 
+textarea,
+input {
+    margin-bottom: 10px;
+    width: 97%;
+    /* height: 70%; */
+    border: 1px solid rgb(255, 67, 99);
+}
+
+label {
+    color: rgb(255, 67, 99);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.submit_btn {
+    cursor: pointer;
+    background: green;
+    color: white;
+    border-radius: 20px;
+}
+
+#lightbox-panel {
+    width: 80%;
+    margin-left: -149px;
+    overflow: scroll;
+    max-height: 554px;
+}
+
 
 /* media queries */
 
@@ -241,5 +269,17 @@ span {
     }
     .show-nav {
         position: static;
+    }
+    #lightbox-panel {
+        display: none;
+        position: fixed;
+        top: 47px;
+        left: 50%;
+        margin-left: -200px;
+        width: 463px;
+        background: #FFFFFF;
+        padding: 10px 15px 10px 15px;
+        z-index: 1001;
+        border-radius: 6px;
     }
 }

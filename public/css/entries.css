@@ -308,4 +308,11 @@ label {
     }
 }
 
-@media
+@media only screen and (max-width: 1000px) and (min-width: 767px) {
+    .card {
+        flex: 1 1 300px;
+        margin: 20px;
+        transition: all .3s;
+        width: 30%;
+    }
+}

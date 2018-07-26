@@ -5,11 +5,11 @@
 }
 
 body {
-    /* background-image: url("https://images.unsplash.com/photo-1521189823702-255a7471ee5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8cb53525d2482e18e1fe4f6ee31482f&auto=format&fit=crop&w=1500&q=80"); */
     background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    min-height: 100vh;
 }
 
 
@@ -18,7 +18,6 @@ body {
 h1 {
     font-family: 'Niconne', cursive;
     text-align: center;
-    /* background: url("https://images.unsplash.com/photo-1521189823702-255a7471ee5a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f8cb53525d2482e18e1fe4f6ee31482f&auto=format&fit=crop&w=1500&q=80"); */
     background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -71,13 +70,7 @@ nav ul li {
 }
 
 .nav-background {
-    /* background: orangered; */
-    background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: navy;
     margin-bottom: 1px;
     color: white;
 }
@@ -85,12 +78,7 @@ nav ul li {
 .toggle-nav {
     text-decoration: none;
     display: block;
-    background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background: navy;
     color: white;
 }
 
@@ -98,6 +86,7 @@ li a {
     text-decoration: none;
     margin: 15px;
     letter-spacing: 4px;
+    color: white;
 }
 
 
@@ -107,7 +96,6 @@ textarea,
 input {
     resize: none;
     outline: none;
-    border-radius: 10px;
     width: 80%;
 }
 
@@ -150,11 +138,12 @@ input[type=number] {
     color: white;
     border-radius: 20px;
     padding: 10px;
-    margin-top: 10px;
+    margin-top: 19px;
     border: none;
     cursor: pointer;
     box-shadow: 0 9px 25px -5px rgb(81, 238, 115);
     transition: 0.3s linear;
+    letter-spacing: 0.1em;
 }
 
 .submit_btn:hover {
@@ -178,6 +167,22 @@ form {
     font-family: Arial;
 }
 
+.flex-outer li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.flex-outer>li>label {
+    flex: 1 0 120px;
+    max-width: 220px;
+}
+
+.flex-outer>li>label+* {
+    flex: 1 0 220px;
+    margin-right:  20px;
+}
+
 
 /* media queries */
 
@@ -187,44 +192,30 @@ form {
         display: flex;
         justify-content: center;
         padding-left: 0px;
-        background: white;
-        /* color: orangered; */
+        margin-bottom:  10px;
     }
     .nav-container li {
         list-style-type: none;
         margin: 5px;
-        /* color: orangered; */
-    }
-    li a {
-        /* color: white; */
-        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-    li a:visited {
-        /* color: orangered; */
-        background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-    }
-    .toggle-nav {
-        display: none;
     }
     .nav-background {
         background: transparent;
+    }
+    li a {
+        color: navy;
+    }
+    li a:visited {
+        color: navy;
+    }
+    .toggle-nav {
+        display: none;
     }
     header h1 {
         font-size: 50px;
     }
     main {
         display: flex;
-        padding: 20px;
+        /* padding: 20px; */
         justify-content: center;
     }
     form {
@@ -233,4 +224,16 @@ form {
     .show-nav {
         position: static;
     }
+    /* .flex-outer li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .flex-outer>li>label {
+        flex: 1 0 120px;
+        max-width: 220px;
+    }
+    .flex-outer>li>label+* {
+        flex: 1 0 220px;
+    } */
 }

@@ -30,42 +30,44 @@
     <main role="main">
 
         <form action="" method="post" role="form">
-            <h1>Start your food diary now!</h1>
+            <h1>Make a new post!</h1>
 
-            <div>
-                <label for="title">Title: </label>
-                <input class="js-title" name="title_input" type="text" id="title" placeholder="Post title">
-            </div>
+            <ul class="flex-outer">
+                <li>
+                    <label for="title">Title </label>
+                    <input class="js-title" name="title_input" type="text" id="title" placeholder="Post title">
+                </li>
 
-            <div>
-                <label for="breakfast">Breakfast: </label>
-                <textarea class="js-breakfast" rows="3" cols="60" name="breakfast_input" id="breakfast" placeholder="What did you have for breakfast?"></textarea>
-            </div>
+                <li>
+                    <label for="breakfast">Breakfast </label>
+                    <textarea class="js-breakfast" name="breakfast_input" id="breakfast" rows="2" cols="60" placeholder="What did you have for breakfast?"></textarea>
+                </li>
 
-            <div>
-                <label for="lunch">Lunch: </label>
-                <textarea class="js-lunch" rows="3" cols="60" name="lunch_input" id="lunch" placeholder="What did you have for lunch?"></textarea>
-            </div>
+                <li>
+                    <label for="lunch">Lunch </label>
+                    <textarea class="js-lunch" rows="2" cols="60" name="lunch_input" id="lunch" placeholder="What did you have for lunch?"></textarea>
+                </li>
 
-            <div>
-                <label for="dinner">Dinner: </label>
-                <textarea class="js-dinner" rows="3" cols="60" name="dinner_input" id="dinner" placeholder="What did you have for dinner?"></textarea>
-            </div>
+                <li>
+                    <label for="dinner">Dinner </label>
+                    <textarea class="js-dinner" rows="2" cols="60" name="dinner_input" id="dinner" placeholder="What did you have for dinner?"></textarea>
+                </li>
 
-            <div>
-                <label for="snacks">Snacks: </label>
-                <textarea class="js-snacks" rows="3" cols="60" name="snacks_input" id="snacks" placeholder="What did you have for snacks?"></textarea>
-            </div>
+                <li>
+                    <label for="snacks">Snacks </label>
+                    <textarea class="js-snacks" rows="2" cols="60" name="snacks_input" id="snacks" placeholder="What did you have for snacks?"></textarea>
+                </li>
 
-            <div>
-                <label for="img">Image address: </label>
-                <input class="js-img" name="image_input" type="text" id="img" placeholder="Enter image address">
-            </div>
+                <li>
+                    <label for="img">Image address </label>
+                    <input class="js-img" name="image_input" type="text" id="img" placeholder="Enter image address">
+                </li>
 
-            <div>
-                <label for="notes">Notes: </label>
-                <input class="js-notes" type="text" name="notes_input" id="notes" placeholder="Enter any notes you want to add.">
-            </div>
+                <li>
+                    <label for="notes">Notes </label>
+                    <input class="js-notes" type="text" name="notes_input" id="notes" placeholder="Enter any notes you want to add.">
+                </li>
+            </ul>
 
             <div>
                 <button class="submit_btn" type="submit">Submit</button>

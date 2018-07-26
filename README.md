@@ -4,8 +4,8 @@
 
 Demo account: 
 
-Email: demo@demo.com  
-Password: demouser
+**Email**: demo@demo.com  
+**Password**: demouser
 
 
 # Screenshots

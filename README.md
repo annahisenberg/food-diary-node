@@ -12,7 +12,7 @@ Password: demouser
 
 ![1.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-04%20at%208.54.02%20PM.png)
 ![2.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-04%20at%209.21.00%20PM.png)
-![3.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-05%20at%2010.18.51%20AM.png)
+![3.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-26%20at%201.39.29%20PM.png)
 ![4.](https://github.com/annahisenberg/food-diary-node/blob/master/Screen%20Shot%202018-07-04%20at%208.54.49%20PM.png)
 
 # Summary 

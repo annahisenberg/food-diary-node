@@ -123,7 +123,7 @@ h1 {
 
 .card p {
     text-align: center;
-    font-family: Arial;
+    /* font-family: Arial; */
     margin-bottom: 5px;
     color: #cc0064;
     font-size: 22px;

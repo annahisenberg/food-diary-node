@@ -10,14 +10,14 @@ const token = getCookie('Token');
 
 
 function burgerNav() {
-    $('.toggle-nav').click(function() {
+    $('.toggle-nav').click(function () {
         $('nav ul').toggleClass("show-nav");
         $('nav ul li').addClass("nav-background");
     })
 }
 
 function addMorePics() {
-    $('.img-btn').click(function(e) {
+    $('.img-btn').click(function (e) {
         e.preventDefault();
         $('.addMorePics').append('<input class="js-img" name="image_input" type="text" placeholder="Enter link to image">');
     });
@@ -52,7 +52,7 @@ function ajaxCall() {
             },
             success: (response) => {
                 if (response) {
-                    $('form').append('<p class="post-msg">You just made a post! <a href="/api/entries-list">Click here</a> to see previous posts.</p>');
+                    $('form').append('<p class="post-msg">You just made a post! <span><a href="/api/entries-list">Click here</a></span> to see previous posts.</p>');
                     $('.js-title').val('');
                     $('.js-breakfast').val('');
                     $('.js-lunch').val('');
@@ -70,7 +70,7 @@ function ajaxCall() {
 }
 
 function logoutUser() {
-    $('#logout a').click(function() {
+    $('#logout a').click(function () {
         document.cookie = 'Token' + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
         window.location.href = '/api/login-page';
     });
@@ -80,7 +80,7 @@ function logoutUser() {
 
 
 //  on page load do this
-$(function() {
+$(function () {
     burgerNav();
     addMorePics();
     ajaxCall();

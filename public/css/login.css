@@ -111,6 +111,11 @@ button:hover {
     position: relative;
 }
 
+p span {
+    font-weight: bold;
+    font-size: 18px;
+}
+
 
 /* Successful sign up message */
 

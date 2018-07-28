@@ -5,7 +5,10 @@ function onSignUp() {
         const email = $('.js-email-field').val();
         const password = $('.js-password-field').val();
         const repeat = $('.js-repeat-password-field').val();
-        console.log(email);
+
+        if (repeat !== password) {
+            return $('#thank-you-msg').html("<p>Your passwords don't match. Please try again.</p>");
+        }
 
 
         $.ajax({
@@ -18,7 +21,7 @@ function onSignUp() {
             },
             success: (response) => {
                 if (response) {
-                    $('#thank-you-msg').append('<p>Thank you for signing up! Now you can login to access the rest of the website.</p>');
+                    $('#thank-you-msg').html('<p>Thank you for signing up! Now you can login to access the rest of the website.</p>');
                     $('.js-email-field').val('');
                     $('.js-password-field').val('');
                     $('.js-repeat-password-field').val('');
@@ -45,8 +48,6 @@ function onLogin() {
 
         const username = $('.js-email-field2').val();
         const password = $('.js-password-field2').val();
-        console.log(username);
-
 
         $.ajax({
             url: '/api/login',
@@ -63,21 +64,22 @@ function onLogin() {
                 window.location.href = '/api/entries-list';
             },
             error: (err) => {
-                console.log(err);
-                // renderError();
+                if (err) {
+                    $('#login-error').html('<p>You have entered a wrong username or password. Please try again.</p>');
+                }
             }
         });
     });
 }
 
 function animateArrowIcon() {
-    $("button").hover(function() {
+    $("button").hover(function () {
         $(".fa-angle-double-right").stop().animate({
             left: '7px'
         });
     });
 
-    $("button").mouseleave(function() {
+    $("button").mouseleave(function () {
         $(".fa-angle-double-right").stop().animate({
             left: '0px'
         });
@@ -85,7 +87,7 @@ function animateArrowIcon() {
 }
 
 function clickRegister() {
-    $('#register-link').click(function(e) {
+    $('#register-link').click(function (e) {
         e.preventDefault();
         $('#login-section').slideUp();
         $('#signup-section').slideDown();
@@ -93,7 +95,7 @@ function clickRegister() {
 }
 
 function clickLogin() {
-    $('#login-link').click(function(e) {
+    $('#login-link').click(function (e) {
         e.preventDefault();
         $('#signup-section').slideUp();
         $('#login-section').slideDown();
@@ -101,7 +103,7 @@ function clickLogin() {
 }
 
 //  on page load do this
-$(function() {
+$(function () {
     animateArrowIcon();
     onLogin();
     onSignUp();

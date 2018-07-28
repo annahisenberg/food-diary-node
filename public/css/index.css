@@ -3,16 +3,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-
-/* body/html styles */
-
-body,
-html {
-    height: 100%;
-    background-image: url("https://images.unsplash.com/photo-1494859802809-d069c3b71a8a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=304a04115ffd171fdcc04a834afff74c&auto=format&fit=crop&w=1500&q=80");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
     margin: 0;
 }
 
@@ -20,26 +11,62 @@ html {
 /* main styles */
 
 h1 {
-    color: #c7266c;
-    /* font-size: 45px; */
-    letter-spacing: 4px;
-    font-family: 'Niconne', cursive;
-    font-size: 67px;
-    text-shadow: 2px 2px #ff7d7d;
+    color: white;
+    font-size: 63px;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: lighter;
 }
 
 .h1-btn-container {
     position: relative;
     bottom: 70px;
+    background: linear-gradient(90deg, #1CB5E0 0%, #000851 100%);
+    height: 66vh;
+    width: 100%;
 }
 
-main {
-    position: absolute;
-    top: 40%;
-    left: 30%;
-    margin-top: -50px;
-    margin-left: -50px;
-    height: 100px;
+#part2 h2 {
+    text-align: center;
+    font-weight: lighter;
+    color: #2f2d2d;
+    margin-top: 0;
+}
+
+ul li {
+    list-style-type: none;
+    border: 3px solid #000b52;
+    border-radius: 12px;
+    /* margin: 10px; */
+    padding: 10px;
+    max-width: 454px;
+    text-align: center;
+    font-size: 17px;
+    /* font-family: Arial; */
+    background: whitesmoke;
+    font-weight: lighter;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#utensils,
+#image,
+#posts {
+    display: block;
+    /* text-align: center; */
+    background: #c7266c;
+    color: white;
+    max-width: 31px;
+    border-radius: 50%;
+    box-shadow: 0 7px 25px -6px rgb(0, 0, 0);
+    /* margin-bottom: 26px; */
+    padding-top: 7px;
+    padding-bottom: 7px;
+    border: 1px solid #710e39;
+    margin: 10px auto;
 }
 
 
@@ -47,8 +74,8 @@ main {
 
 #start-btn {
     cursor: pointer;
-    width: 50%;
-    border: 1px solid #c7266c;
+    width: 30%;
+    border: 1px solid white;
     border-radius: 25px;
     background: transparent;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -56,7 +83,10 @@ main {
     padding: 9px;
     outline: none;
     transition: all 0.25s;
-    color: #c7266c;
+    color: white;
+    position: absolute;
+    top: 86%;
+    left: 23%;
 }
 
 #start-btn:hover {
@@ -78,14 +108,38 @@ a {
 #logout-btn {
     display: none;
     cursor: pointer;
-    background: #c7266c;
-    color: white;
+    background: white;
+    color: #000b52;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 25px;
     padding: 9px;
     transition: all 0.3s;
+    position: absolute;
+    top: 86%;
+    left: 56%;
 }
 
 #logout-btn:hover {
-    background: #a32059;
+    background: #e4e2e2;
+}
+
+@media only screen and (min-width: 768px) {
+    #part2 ul {
+        display: flex;
+        justify-content: center;
+    }
+    ul li {
+        margin: 5px 15px;
+        max-width: 250px;
+    }
+    #start-btn {
+        width: 15%;
+        top: 82%;
+        left: 38%;
+    }
+    #logout-btn {
+        position: absolute;
+        top: 82%;
+        left: 54%;
+    }
 }
